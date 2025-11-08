@@ -5,6 +5,11 @@ import Register from "../Components/Register";
 import Login from "../Components/Login";
 import RootLayout from "../Layout/RootLayout";
 import Home from "../Pages/Home";
+import AllVehicles from "../Components/AllVehicles";
+import AddVehicle from "../Components/AddVehicle";
+import PrivateRouter from "./PrivateRouter";
+import MyVehicles from "../Components/MyVehicles";
+import MyBookings from "../Components/MyBookings";
 
 const router = createBrowserRouter([
 {
@@ -16,12 +21,32 @@ const router = createBrowserRouter([
         Component: Home
         },
         {
-        path: "login",
-        Component: Login,
+            path: "allVehicles",
+            element: <PrivateRouter> <AllVehicles/> </PrivateRouter>
         },
         {
-        path: "register",
-        Component: Register,
+            path: "myVehicles",
+            element: <PrivateRouter> <MyVehicles/> </PrivateRouter>
+        },
+        {
+            path: "myBookings",
+            element: <PrivateRouter> <MyBookings/> </PrivateRouter>
+        },
+        {
+            path: "addVehicle",
+            element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
+        },
+        {
+            path: "login",
+            Component: Login,
+        },
+        {
+            path: "login",
+            Component: Login,
+        },
+        {
+            path: "register",
+            Component: Register,
         },
     ],
 },
