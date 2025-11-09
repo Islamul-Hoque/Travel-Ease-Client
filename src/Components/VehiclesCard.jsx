@@ -73,7 +73,7 @@ const VehiclesCard = ({ vehicle }) => {
 
                 <div className="card-actions justify-end mt-4">
                 
-                    <Link to={`/vehicle-details/${_id}`} className="btn btn-primary w-full text-white font-semibold">
+                    <Link to={`/vehiclesDetails/${_id}`} className="btn btn-primary w-full text-white font-semibold">
                         View Details
                     </Link>
                 </div>

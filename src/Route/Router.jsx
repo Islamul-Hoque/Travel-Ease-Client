@@ -10,11 +10,14 @@ import AddVehicle from "../Components/AddVehicle";
 import PrivateRouter from "./PrivateRouter";
 import MyVehicles from "../Components/MyVehicles";
 import MyBookings from "../Components/MyBookings";
+import Spinner from "../Components/Spinner";
+import VehiclesDetails from "../Components/VehiclesDetails";
 
 const router = createBrowserRouter([
 {
     path: "/",
     Component: RootLayout,
+    // HydrateFallback: <Spinner/>,
     children: [
         {
         index: true,
@@ -23,6 +26,11 @@ const router = createBrowserRouter([
         {
             path: "allVehicles",
             element: <PrivateRouter> <AllVehicles/> </PrivateRouter>
+        },
+        {
+            path: "vehiclesDetails/:id",
+            loader: ({params})=> fetch(`http://localhost:3000/vehicles/${params.id}`),
+            element: <PrivateRouter> <VehiclesDetails/> </PrivateRouter>
         },
         {
             path: "myVehicles",
@@ -35,10 +43,6 @@ const router = createBrowserRouter([
         {
             path: "addVehicle",
             element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
-        },
-        {
-            path: "login",
-            Component: Login,
         },
         {
             path: "login",
