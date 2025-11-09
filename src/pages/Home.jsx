@@ -5,7 +5,7 @@ import useAxiosSecure from '../Hooks/useAxiosSecure';
 const Home = () => {
     const [vehicles, setVehicles] = useState([]);
     const [loading, setLoading] = useState(true); 
-const axiosSecure = useAxiosSecure()
+    const axiosSecure = useAxiosSecure()
 
     useEffect(() => {
         setLoading(true);
@@ -44,8 +44,7 @@ const axiosSecure = useAxiosSecure()
                 Newly Added <span className='text-primary'>Vehicles</span>
             </h2>
 
-         
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
                 {
                     vehicles.map(vehicle => 
                         <VehiclesCard key={vehicle._id} vehicle={vehicle}/> 
