@@ -11,6 +11,8 @@ import { HiOutlineMail } from 'react-icons/hi';
 
 const VehicleDetails = () => {
     const data = useLoaderData();
+    console.log(data);
+    
 
     if (!data) return <p className="text-center py-10 text-xl">Loading vehicle details...</p>;
 

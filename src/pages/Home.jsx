@@ -11,11 +11,8 @@ const Home = () => {
         setLoading(true);
         axiosSecure.get('/vehicles') 
             .then(data => {
-                const sortedVehicles = data.data.sort((a, b) => 
-                    new Date(b.createdAt) - new Date(a.createdAt)
-                );
-                setVehicles(sortedVehicles.slice(0, 6));
-                setLoading(false);
+            setVehicles(data.data); 
+            setLoading(false);
             })
             .catch(error => {
                 console.error("Error fetching vehicles:", error);
@@ -36,7 +33,7 @@ const Home = () => {
             </div>
         );
     }
-    
+
     return (
         <div className='max-w-7xl mx-auto px-4 py-8'>
         

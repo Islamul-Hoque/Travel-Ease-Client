@@ -24,24 +24,24 @@ const router = createBrowserRouter([
         Component: Home
         },
         {
-            path: "allVehicles",
+            path: "all-vehicles",
             element: <PrivateRouter> <AllVehicles/> </PrivateRouter>
         },
         {
-            path: "vehiclesDetails/:id",
-            loader: ({params})=> fetch(`http://localhost:3000/vehicles/${params.id}`),
+            path: "/vehicles-details/:id",
+            loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
             element: <PrivateRouter> <VehiclesDetails/> </PrivateRouter>
         },
         {
-            path: "myVehicles",
+            path: "my-vehicles",
             element: <PrivateRouter> <MyVehicles/> </PrivateRouter>
         },
         {
-            path: "myBookings",
+            path: "my-bookings",
             element: <PrivateRouter> <MyBookings/> </PrivateRouter>
         },
         {
-            path: "addVehicle",
+            path: "add-vehicle",
             element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
         },
         {

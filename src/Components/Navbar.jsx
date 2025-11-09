@@ -36,20 +36,21 @@ export default function Navbar() {
             .catch((error) => toast.error(error.code));
     };
 
-    const navLinks = (
-        <>
-            <li><NavLink end to="/" className={activeClass}>Home</NavLink></li>
-            <li><NavLink end to="/allVehicles" className={activeClass}>All Vehicles</NavLink></li>
-            
-            {user && (
-                <>
-                    <li><NavLink end to="/myVehicles" className={activeClass}>My Vehicles</NavLink></li>
-                    <li><NavLink end to="/myBookings" className={activeClass}>My Bookings</NavLink></li>
-                    <li><NavLink end to="/addVehicle" className={activeClass}>Add Vehicle</NavLink></li>
-                </>
-            )}
-        </>
-    );
+const navLinks = (
+    <>
+        <li><NavLink end to="/" className={activeClass}>Home</NavLink></li>
+        <li><NavLink end to="/all-vehicles" className={activeClass}>All Vehicles</NavLink></li>
+
+        {user && (
+            <>
+                <li><NavLink end to="/my-vehicles" className={activeClass}>My Vehicles</NavLink></li>
+                <li><NavLink end to="/my-bookings" className={activeClass}>My Bookings</NavLink></li>
+                <li><NavLink end to="/add-vehicle" className={activeClass}>Add Vehicle</NavLink></li>
+            </>
+        )}
+    </>
+);
+
 
     return (
         <div className="navbar bg-white px-6 md:px-8 shadow-md sticky top-0 z-40">
