@@ -11,8 +11,6 @@ import { HiOutlineMail } from 'react-icons/hi';
 
 const VehicleDetails = () => {
     const data = useLoaderData();
-    console.log(data);
-    
 
     if (!data) return <p className="text-center py-10 text-xl">Loading vehicle details...</p>;
 
@@ -21,7 +19,6 @@ const VehicleDetails = () => {
     const normalizedRating = data.rating?.$numberDouble ? parseFloat(data.rating.$numberDouble) : data.rating;
     const normalizedReviewsCount = data.reviewsCount?.$numberInt ? parseInt(data.reviewsCount.$numberInt) : data.reviewsCount;
     const normalizedSeatingCapacity = data.seatingCapacity?.$numberInt ? parseInt(data.seatingCapacity.$numberInt) : data.seatingCapacity;
-    
 
     const {
         vehicleName,

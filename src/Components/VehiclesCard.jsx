@@ -61,7 +61,7 @@ const VehiclesCard = ({ vehicle }) => {
                         </p>
                     </div>
 
-                    <Link to={`/vehicles-details/${_id}`} className="btn btn-primary text-white font-semibold shadow-md hover:shadow-lg">  View Details </Link>
+                    <Link to={`/vehicle-details/${_id}`} className="btn btn-primary text-white font-semibold shadow-md hover:shadow-lg">  View Details </Link>
 
                 </div>
 
