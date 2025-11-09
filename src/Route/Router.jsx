@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         },
         {
             path: "all-vehicles",
-            element: <PrivateRouter> <AllVehicles/> </PrivateRouter>
+            Component: AllVehicles
         },
         {
             path: "/vehicle-details/:id",

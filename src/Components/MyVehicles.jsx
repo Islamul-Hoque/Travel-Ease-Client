@@ -6,6 +6,7 @@ import { useNavigate, Link } from 'react-router';
 import { FaEye, FaEdit, FaTrash, FaDollarSign, FaChair, FaMapMarkerAlt, FaCar } from 'react-icons/fa'; // FaCar আইকন যোগ করা হলো
 import { MdOutlineDateRange } from 'react-icons/md';
 import Spinner from './Spinner';
+import Swal from 'sweetalert2';
 
 const MyVehicles = () => {
     const { user } = useAuth();
@@ -41,20 +42,33 @@ const MyVehicles = () => {
         ), { duration: 5000 });
     };
 
-    const confirmDelete = (id) => {
-        axiosSecure.delete(`/my-vehicles/${id}`) 
-            .then(res => {
-                if (res.data.deletedCount > 0) {
-                    setVehicles(prev => prev.filter(v => v._id !== id));
-                    toast.success('Vehicle deleted successfully!');
-                } else {
-                    toast.error('Deletion failed or vehicle not found.');
-                }
-            })
-            .catch(err => {
-                console.error("Delete Vehicle Error:", err);
-                toast.error('Failed to delete vehicle.');
-            });
+    const handleDeleteVehicle = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/my-vehicles/${id}`)
+                    .then(res => {
+                        if(res.data.deletedCount){
+                            Swal.fire({ title: "Deleted!", text: "Vehicle deleted successfully.", icon: "success" });
+                            setVehicles(prev => prev.filter(vehicle => vehicle._id !== id));
+                        } else {
+                            Swal.fire({ title: "Failed!", text: "Vehicle not found or already deleted.", icon: "error" });
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Delete Vehicle Error:", err);
+                        Swal.fire({ title: "Error!", text: "Failed to delete vehicle.", icon: "error" });
+                    })
+            }
+        });
     };
 
     const handleUpdate = (id) => {
@@ -131,7 +145,7 @@ const MyVehicles = () => {
                             <div className="grid grid-cols-3 p-6 pt-0 border-t border-gray-100 gap-2">
                                 <button onClick={() => handleView(vehicle._id)} className="btn btn-sm btn-primary text-white flex items-center gap-1 w-full"> <FaEye /> Details </button>
                                 <button onClick={() => handleUpdate(vehicle._id)} className="btn btn-sm btn-warning text-white flex items-center gap-1 w-full"> <FaEdit /> Update </button>
-                                <button onClick={() => handleDelete(vehicle._id, vehicle.vehicleName)} className="btn btn-sm btn-error text-white flex items-center gap-1 w-full"> <FaTrash /> Delete  </button>
+                                <button onClick={() => handleDeleteVehicle(vehicle._id, vehicle.vehicleName)} className="btn btn-sm btn-error text-white flex items-center gap-1 w-full"> <FaTrash /> Delete  </button>
                             </div>
 
                         </div>
