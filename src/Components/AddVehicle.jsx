@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
-import { toast } from 'react-hot-toast';
 import { FaCar, FaUser, FaCamera, FaDollarSign, FaMapMarkerAlt, FaChair, FaListAlt, FaImage, FaInfoCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const VEHICLE_CATEGORIES = ['Sedan', 'SUV', 'Electric', 'Van'];
 
@@ -51,13 +51,22 @@ const AddVehicle = () => {
             .then(data => {
                 // console.log('After secure call:', data.data);
                 if (data.data.insertedId) {
-                    toast.success('Vehicle added successfully!');
+                    toast.success(`${vehicleName} has been added successfully! 🚗`,
+                        {
+                        position: "top-center",
+                            style: {
+                                borderRadius: "12px",
+                                background: "#fff",
+                                color: "#222",
+                                fontWeight: "600",
+                            }
+                        }
+                    )
                     e.target.reset();
                 }
             })
             .catch(err => {
-            // console.error("Vehicle Add Error:", err);
-                toast.error('Failed to add vehicle. Please check network and server.');
+                toast.error(`Failed to add ${vehicleName}. Please try again! ❌`,)
             })
             .finally(() => {
                 setLoading(false);
@@ -139,12 +148,7 @@ const AddVehicle = () => {
                     </div>
 
                     <div className="form-control mt-8 pt-4 border-t border-gray-200">
-                        <button type="submit" className="btn btn-primary w-full text-white font-semibold text-lg shadow-md hover:shadow-lg" disabled={loading}>
-                            {loading ? 
-                                <span className="loading loading-spinner loading-md"></span> : 
-                                "Add Vehicle"
-                            }
-                        </button>
+                        <button type="submit" className="btn btn-primary-w-full mt-4" disabled={loading}> {loading ? "Adding Vehicle..." : "Add Vehicle"} </button>
                     </div>
                 </form>
             </div>

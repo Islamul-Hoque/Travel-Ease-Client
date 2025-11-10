@@ -3,7 +3,7 @@ import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { toast } from 'react-hot-toast';
 import { useNavigate, Link } from 'react-router';
-import { FaEye, FaEdit, FaTrash, FaDollarSign, FaChair, FaMapMarkerAlt, FaCar } from 'react-icons/fa'; // FaCar আইকন যোগ করা হলো
+import { FaEye, FaEdit, FaTrash, FaDollarSign, FaChair, FaMapMarkerAlt, FaCar } from 'react-icons/fa'; 
 import { MdOutlineDateRange } from 'react-icons/md';
 import Spinner from './Spinner';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 const MyVehicles = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [vehicles, setVehicles] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -29,18 +29,6 @@ const MyVehicles = () => {
                 .finally(() => setLoading(false));
         }
     }, [user, axiosSecure]);
-
-    const handleDelete = (id, name) => {
-        toast.custom((t) => (
-            <div className={`bg-white px-6 py-4 shadow-xl rounded-md ${t.visible ? 'animate-enter' : 'animate-leave'} flex items-center gap-4 border-l-4 border-red-500`}>
-                <p className="text-gray-700">Are you sure you want to delete <span className="font-bold text-red-600">{name}</span>?</p>
-                <div className='flex gap-2'>
-                    <button onClick={() => { toast.dismiss(t.id); confirmDelete(id); }} className="btn btn-sm bg-red-600 text-white hover:bg-red-700 border-none">Delete</button>
-                    <button onClick={() => toast.dismiss(t.id)} className="btn btn-sm bg-gray-200 text-gray-800 hover:bg-gray-300 border-none">Cancel</button>
-                </div>
-            </div>
-        ), { duration: 5000 });
-    };
 
     const handleDeleteVehicle = (id) => {
         Swal.fire({
@@ -69,14 +57,6 @@ const MyVehicles = () => {
                     })
             }
         });
-    };
-
-    const handleUpdate = (id) => {
-        navigate(`/update-vehicle/${id}`);
-    };
-
-    const handleView = (id) => {
-        navigate(`/vehicle-details/${id}`);
     };
 
     if (loading) {
@@ -112,7 +92,7 @@ const MyVehicles = () => {
                                 <div className="badge badge-lg badge-accent absolute top-4 left-4 text-white text-sm font-semibold p-3 shadow-md">{vehicle.category}</div>
                             </figure>
 
-                            <div className="card-body p-6 space-y-3 flex-grow">
+                            <div className="card-body p-6 space-y-3 grow">
                                 <h2 className="card-title text-2xl font-bold text-gray-900">{vehicle.vehicleName}</h2>
 
                                 <div className="flex flex-wrap gap-x-4 gap-y-1 text-gray-600 text-sm">
@@ -135,16 +115,14 @@ const MyVehicles = () => {
                                     Added: {new Date(vehicle.createdAt).toLocaleDateString()}
                                 </div>
 
-                                <p className="flex items-baseline font-extrabold text-3xl text-secondary pt-2">
-                                    <FaDollarSign className='text-primary text-xl mr-1'/> 
-                                    {price} 
-                                    <span className='text-base text-gray-500 font-normal'>/ Day</span>
-                                </p>
+                                <div className="flex items-baseline font-extrabold text-3xl text-secondary pt-2">
+                                    <FaDollarSign className='text-primary text-xl mr-1'/> {price}  <span className='text-base text-gray-500 font-normal'>/ Day</span>
+                                </div>
                             </div>
 
                             <div className="grid grid-cols-3 p-6 pt-0 border-t border-gray-100 gap-2">
-                                <button onClick={() => handleView(vehicle._id)} className="btn btn-sm btn-primary text-white flex items-center gap-1 w-full"> <FaEye /> Details </button>
-                                <button onClick={() => handleUpdate(vehicle._id)} className="btn btn-sm btn-warning text-white flex items-center gap-1 w-full"> <FaEdit /> Update </button>
+                                <Link to={`/vehicle-details/${vehicle._id}`} className="btn btn-sm btn-primary text-white flex items-center gap-1 w-full"> <FaEye /> Details </Link>
+                                <Link to={`/update-vehicle/${vehicle._id}`} className="btn btn-sm btn-warning text-white flex items-center gap-1 w-full"> <FaEdit /> Update </Link>
                                 <button onClick={() => handleDeleteVehicle(vehicle._id, vehicle.vehicleName)} className="btn btn-sm btn-error text-white flex items-center gap-1 w-full"> <FaTrash /> Delete  </button>
                             </div>
 
