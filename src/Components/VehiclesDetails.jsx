@@ -14,7 +14,7 @@ const VehicleDetails = () => {
     const axiosSecure = useAxiosSecure()
     const [isBooked, setIsBooked] = useState(false);
 
-    if (!data) return <p className="text-center py-10 text-xl">Loading vehicle details...</p>;
+    if (!data) return <p className="text-center py-10 text-xl">vehicle details...</p>;
 
     const { _id, vehicleName, ownerName, ownerPhoto, category, pricePerDay, location, seatingCapacity, features = [], rating = 0, totalBookings = 0, description, coverImage, createdAt, userEmail, status = 'active' } = data;
     const formattedDate = format(new Date(createdAt), "MM/dd/yyyy")
