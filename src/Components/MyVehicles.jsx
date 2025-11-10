@@ -30,10 +30,10 @@ const MyVehicles = () => {
         }
     }, [user, axiosSecure]);
 
-    const handleDeleteVehicle = (id) => {
+    const handleDeleteVehicle = (id, vehicleName) => {
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: `You are about to delete ${vehicleName}!`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -45,7 +45,7 @@ const MyVehicles = () => {
                 axiosSecure.delete(`/my-vehicles/${id}`)
                     .then(res => {
                         if(res.data.deletedCount){
-                            Swal.fire({ title: "Deleted!", text: "Vehicle deleted successfully.", icon: "success" });
+                            Swal.fire({ title: "Deleted!", text: `"${vehicleName}" has been deleted successfully! 🗑️`, icon: "success" });
                             setVehicles(prev => prev.filter(vehicle => vehicle._id !== id));
                         } else {
                             Swal.fire({ title: "Failed!", text: "Vehicle not found or already deleted.", icon: "error" });

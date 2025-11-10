@@ -45,23 +45,12 @@ const AddVehicle = () => {
             seatingCapacity: parseInt(seatingCapacity),
             features: features.split(',').map(f => f.trim()), 
         };
-        console.log("Vehicle Data Ready:", newVehicleData);
 
         axiosSecure.post('/add-vehicle', newVehicleData)
             .then(data => {
                 // console.log('After secure call:', data.data);
                 if (data.data.insertedId) {
-                    toast.success(`${vehicleName} has been added successfully! 🚗`,
-                        {
-                        position: "top-center",
-                            style: {
-                                borderRadius: "12px",
-                                background: "#fff",
-                                color: "#222",
-                                fontWeight: "600",
-                            }
-                        }
-                    )
+                    toast.success(`"${vehicleName}" has been added successfully! 🚗`)
                     e.target.reset();
                 }
             })

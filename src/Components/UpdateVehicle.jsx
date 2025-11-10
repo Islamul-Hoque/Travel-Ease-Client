@@ -30,21 +30,13 @@ const UpdateVehicle = () => {
         axiosSecure.patch(`/my-vehicles/${vehicle._id}`, updatedVehicle)
             .then(data => {
                 if (data.data.modifiedCount) {
-                    toast.success(`${updatedVehicle.vehicleName} updated successfully! 🚗`, {
-                        position: "top-center",
-                        style: {
-                            borderRadius: "12px",
-                            background: "#fff",
-                            color: "#222",
-                            fontWeight: "600",
-                        }
-                    });
+                    toast.success(`"${updatedVehicle.vehicleName}" updated successfully! 🚗`);
                     navigate('/my-vehicles');
                 }
             })
             .catch(err => {
                 console.error("Update Vehicle Error:", err);
-                toast.error('Failed to update vehicle. Try again!', { position: "top-center" });
+                toast.error('Failed to update vehicle. Try again!');
             })
             .finally(() => setLoading(false));
     };
