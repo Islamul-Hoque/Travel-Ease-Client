@@ -1,13 +1,16 @@
+/* @import "tailwindcss";
+@plugin "daisyui" 
+{
+    themes: light --default;
+} */
+
 @import "tailwindcss";
 @plugin "daisyui" {
-    themes: light --default;
+  themes: light --default, dark --prefersdark;
 }
-@plugin "daisyui/theme" {
-    /* name: "light";
-    default: true; */
-    --color-primary: blue;
-    --color-secondary: teal;
-}
+
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 .text-gradient {
   @apply bg-[linear-gradient(125.07deg,#632EE3,#9F62F2_100%)] bg-clip-text text-transparent ;

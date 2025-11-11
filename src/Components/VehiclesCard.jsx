@@ -1,11 +1,8 @@
-// src/Components/VehiclesCard.jsx
-
 import React from 'react';
 import { Link } from 'react-router'; 
 import { FaDollarSign, FaStar, FaChair } from 'react-icons/fa'; 
 import { HiOutlineLocationMarker } from 'react-icons/hi'; 
 import { MdOutlineDateRange } from 'react-icons/md'; 
-
 
 const VehiclesCard = ({ vehicle }) => {
     const { _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt } = vehicle;

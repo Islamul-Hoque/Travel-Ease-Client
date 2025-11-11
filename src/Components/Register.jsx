@@ -1,16 +1,16 @@
-import React, {  useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { FaEye} from 'react-icons/fa';
 import { IoEyeOff } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import { FcGoogle } from 'react-icons/fc';
-import { AuthContext } from '../Context/AuthProvider';
+import useAuth from '../Hooks/useAuth';
 
 const Signup = () => {
-    const { createUser, googleSignIn, setUser, updateUser } = useContext(AuthContext)
+    const { createUser, googleSignIn, setUser, updateUser } = useAuth()
     const [show, setShow] =useState(false)
     const [error, setError] = useState('')
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault()
@@ -43,12 +43,12 @@ const Signup = () => {
         createUser( email, password)
             .then(result => {
             const user = result.user
+            toast.success("Account created successfully!")
+            navigate('/')
 
             updateUser({displayName, photoURL})
                 .then(()=> {
                     setUser({...user ,displayName, photoURL});
-                    toast.success("Account created successfully!")
-                    navigate('/')
                 })
                 .catch(error => {
                     toast.error(error.message)
@@ -71,29 +71,9 @@ const Signup = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                const newUser = {
-                    name : result.user.displayName,
-                    email : result.user.email,
-                    photoURL : result.user.photoURL,
-                }
-
-                // create user in the database
-                fetch('https://smart-deals-api-server-weld.vercel.app/user', {
-                    method: 'POST',
-                    headers: {
-                        "Content-type" : "application/json"
-                    },
-                    body: JSON.stringify(newUser)
-                })
-                    .then(res=> res.json())
-                    .then(data => {
-                        console.log( 'data after user save' , data);
-                    })
-
-            // 
                 setUser(result.user)
                 toast.success('Signed up with Google successfully!');
-                navigate(location.state || '/')
+                navigate('/')
             })
             .catch(error => {
                 toast.error(error.message)
@@ -103,7 +83,7 @@ const Signup = () => {
     return (
         <div className="flex justify-center items-center min-h-screen pt-12 pb-16 bg-gray-100">
             <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem] bg-white overflow-hidden shadow">
-                <h2 className="text-3xl font-bold text-center pt-6"> Sign Up for <span className="bg-[linear-gradient(125.07deg,#632ee3,#9f62f2_100%)] bg-clip-text text-transparent ">SmartDeals</span></h2>
+                <h2 className="text-3xl font-bold text-center pt-6"> Sign Up for <span className="text-gradient">TravelEase</span></h2>   
                 <div className="card-body">
                     <form onSubmit={ handleRegister }>
                         <fieldset className="fieldset">
@@ -124,7 +104,7 @@ const Signup = () => {
 
                             { error && <p className='text-red-500 text-[0.8rem]'> {error} </p> }
 
-                            <button type="submit" className="btn mt-3 btn-primary" >  Sign Up </button>
+                            <button type="submit" className="btn-primary-w-full mt-4" >  Sign Up </button>
                         </fieldset>
                     </form>
 
@@ -136,7 +116,7 @@ const Signup = () => {
                         <hr className="flex-1 border-gray-200" />
                     </div>
 
-                    <button onClick={handleGoogleSignIn} className="btn w-full bg-white text-black rounded-md border border-[#e5e5e5] flex items-center justify-center gap-2"> <FcGoogle size={18}/>Login with Google</button>
+                    <button onClick={handleGoogleSignIn} className="btn w-full bg-white text-black rounded-md border border-[#e5e5e5] flex items-center justify-center gap-2"> <FcGoogle size={18}/>Sign Up with Google</button>
 
                 </div>
             </div>

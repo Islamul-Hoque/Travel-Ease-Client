@@ -4,7 +4,6 @@ import { createBrowserRouter } from "react-router";
 import Register from "../Components/Register";
 import Login from "../Components/Login";
 import RootLayout from "../Layout/RootLayout";
-import Home from "../Pages/Home";
 import AllVehicles from "../Components/AllVehicles";
 import AddVehicle from "../Components/AddVehicle";
 import PrivateRouter from "./PrivateRouter";
@@ -13,6 +12,7 @@ import MyBookings from "../Components/MyBookings";
 import Spinner from "../Components/Spinner";
 import VehiclesDetails from "../Components/VehiclesDetails";
 import UpdateVehicle from "../Components/UpdateVehicle";
+import HomeLayout from "../Layout/HomeLayout";
 
 const router = createBrowserRouter([
 {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
         {
         index: true,
-        Component: Home
+        Component: HomeLayout
         },
         {
             path: "all-vehicles",

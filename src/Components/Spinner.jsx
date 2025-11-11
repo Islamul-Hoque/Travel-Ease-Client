@@ -2,8 +2,8 @@ import React from 'react';
 
 const Spinner = () => {
     return (
-        <div>
-            <h3>Spinner</h3>
+        <div className='flex justify-center items-center min-h-screen'>
+            <span className="loading loading-bars loading-xl"></span>
         </div>
     );
 };
