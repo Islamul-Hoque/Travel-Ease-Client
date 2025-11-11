@@ -27,14 +27,14 @@ const HomeLayout = () => {
     return (
         <div>
             <section className=''><Banner/></section>
-            {/* <section className='px-6 md:px-10'>
-                <h2 className="text-3xl font-bold text-center my-12"> Newly Added <span className='text-primary'>Vehicles</span></h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12">
+            <section className='px-6 md:px-10'>
+                <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center my-12"> Newly Added <span className='text-gradient'>Vehicles</span></h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     { vehicles.map(vehicle => 
                         <VehiclesCard key={vehicle._id} vehicle={vehicle}/> )
                     }
                 </div>
-            </section> */}
+            </section>
             <section> <TopCategories/> </section>
         </div>
     );
