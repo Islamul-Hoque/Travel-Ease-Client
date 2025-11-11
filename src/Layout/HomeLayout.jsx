@@ -4,6 +4,7 @@ import Spinner from '../Components/Spinner';
 import useAxios from '../Hooks/useAxios';
 import Banner from '../Components/Banner';
 import TopCategories from '../Components/TopCategories';
+import AboutTravelEase from '../Components/AboutTravelEase';
 
 const HomeLayout = () => {
     const [vehicles, setVehicles] = useState([]);
@@ -36,6 +37,7 @@ const HomeLayout = () => {
                 </div>
             </section>
             <section> <TopCategories/> </section>
+            <section> <AboutTravelEase/> </section>
         </div>
     );
 };
