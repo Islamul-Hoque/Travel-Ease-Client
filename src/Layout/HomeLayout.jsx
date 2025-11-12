@@ -27,7 +27,7 @@ const HomeLayout = () => {
 
     return (
         <div>
-            <section className=''><Banner/></section>
+            <section><Banner/></section>
             <section className='px-6 md:px-10'>
                 <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center my-12"> Newly Added <span className='text-gradient'>Vehicles</span></h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -36,8 +36,8 @@ const HomeLayout = () => {
                     }
                 </div>
             </section>
-            <section> <TopCategories/> </section>
-            <section> <AboutTravelEase/> </section>
+            <section><TopCategories/> </section>
+            <section><AboutTravelEase/> </section>
         </div>
     );
 };
