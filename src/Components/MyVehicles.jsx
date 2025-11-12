@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from "react";
-import useAuth from "../Hooks/useAuth";
-import { toast } from "react-hot-toast";
-import { Link } from "react-router";
-import { FaEye, FaEdit, FaTrash,FaDollarSign, FaChair,
-  FaMapMarkerAlt,
-  FaCar,
-} from "react-icons/fa";
+import { FaEye, FaEdit, FaTrash, FaDollarSign, FaChair, FaMapMarkerAlt, FaCar, FaStar, FaTags } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { Link } from "react-router";
 import Spinner from "./Spinner";
 import Swal from "sweetalert2";
+import useAuth from "../Hooks/useAuth";
 import useAxios from "../Hooks/useAxios.jsx";
+import { toast } from "react-toastify";
 
 const MyVehicles = () => {
   const { user } = useAuth();
-  const axiosInstance = useAxios()
+  const axiosInstance = useAxios();
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
-      axiosInstance
-        .get(`/my-vehicles?email=${user.email}`)
-        .then((data) => {
-          setVehicles(data.data);
-        })
-        .catch((err) => {
-          console.error("Fetch My Vehicles Error:", err);
-          toast.error("Failed to fetch your vehicles.");
-        })
+      axiosInstance.get(`/my-vehicles?email=${user.email}`)
+        .then(data => setVehicles(data.data))
         .finally(() => setLoading(false));
     }
   }, [user, axiosInstance]);
@@ -44,8 +35,7 @@ const MyVehicles = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosInstance
-          .delete(`/my-vehicles/${id}`)
+        axiosInstance.delete(`/my-vehicles/${id}`)
           .then((res) => {
             if (res.data.deletedCount) {
               Swal.fire({
@@ -53,9 +43,7 @@ const MyVehicles = () => {
                 text: `"${vehicleName}" has been deleted successfully! 🗑️`,
                 icon: "success",
               });
-              setVehicles((prev) =>
-                prev.filter((vehicle) => vehicle._id !== id)
-              );
+              setVehicles((prev) => prev.filter((vehicle) => vehicle._id !== id));
             } else {
               Swal.fire({
                 title: "Failed!",
@@ -76,27 +64,15 @@ const MyVehicles = () => {
     });
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex justify-center items-center bg-gray-100">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
-      </div>
-    );
-  }
+  if (loading) return <Spinner />;
 
   if (vehicles.length === 0) {
     return (
-      <div className="min-h-[50vh] flex flex-col items-center justify-center p-8 bg-gray-100">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
-          ❌ No Vehicles Listed Yet
+      <div className="flex flex-col items-center justify-center bg-gray-100">
+        <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center text-black mt-12">
+          No Vehicles Listed <span className='text-gradient'>Yet</span>
         </h2>
-        <p className="text-lg text-gray-600 mb-6">
-          It looks like you haven't added any vehicles for rent yet.
-        </p>
-        <Link
-          to="/add-vehicle"
-          className="btn btn-primary text-white font-semibold shadow-lg"
-        >
+        <Link to="/add-vehicle" className="btn-primary mt-6 mb-14">
           Add Your First Vehicle Now!
         </Link>
       </div>
@@ -104,98 +80,44 @@ const MyVehicles = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10 min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-2">
-        My <span className="text-primary">Listed Vehicles</span>
-      </h1>
-      <p className="text-center text-gray-500 mb-10">
-        Manage your vehicle listings, update details, or remove them from the
-        platform.
-      </p>
+    <div className="px-6 md:px-10 bg-gray-100">
+      <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center text-black py-12"> My <span className='text-gradient'>Listed Vehicles</span></h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-14">
+        {vehicles.map((vehicle) => (
+          <div key={vehicle._id} className="card w-full bg-white shadow-xl transition-all duration-300 transform hover:shadow-2xl border border-gray-100 rounded-2xl overflow-hidden flex flex-col group">
+            
+            {/* Vehicle Image */}
+            <div className="relative h-56 w-full overflow-hidden">
+              <img src={vehicle.coverImage} alt={vehicle.vehicleName} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /></div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {vehicles.map((vehicle) => {
-          const price = vehicle.pricePerDay?.$numberInt
-            ? parseInt(vehicle.pricePerDay.$numberInt)
-            : vehicle.pricePerDay;
-
-          return (
-            <div
-              key={vehicle._id}
-              className="card w-full bg-white shadow-xl transition-all duration-300 transform hover:shadow-2xl border border-gray-100 rounded-2xl overflow-hidden flex flex-col group"
-            >
-              <figure className="relative h-56 w-full overflow-hidden">
-                <img
-                  src={vehicle.coverImage}
-                  alt={vehicle.vehicleName}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="badge badge-lg badge-accent absolute top-4 left-4 text-white text-sm font-semibold p-3 shadow-md">
-                  {vehicle.category}
-                </div>
-              </figure>
-
-              <div className="card-body p-6 space-y-3 grow">
-                <h2 className="card-title text-2xl font-bold text-gray-900">
-                  {vehicle.vehicleName}
-                </h2>
-
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-gray-600 text-sm">
-                  <span className="flex items-center gap-1 font-bold text-primary">
-                    <FaCar className="text-primary text-sm" />
-                    {vehicle.category}
-                  </span>
-                  <span className="flex items-center gap-1 font-medium">
-                    <FaChair className="text-primary text-sm" />
-                    {vehicle.seatingCapacity} Seats
-                  </span>
-                  <span className="flex items-center gap-1 font-medium">
-                    <FaMapMarkerAlt className="text-primary text-sm" />
-                    {vehicle.location?.split(",")[0]}
-                  </span>
+            <div className="card-body p-6 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className='flex justify-between items-start'>
+                  <h2 className="card-title text-2xl text-black font-extrabold leading-snug">{vehicle.vehicleName}</h2>
+                  <div className='flex items-center gap-1 text-primary font-bold text-lg'>  <FaStar className='text-yellow-500 text-base' /> {Number(vehicle.rating).toFixed(1)}</div>
                 </div>
 
-                <div className="flex items-center gap-1 font-medium text-gray-500 text-sm">
-                  <MdOutlineDateRange className="text-primary text-base" />
-                  Added: {new Date(vehicle.createdAt).toLocaleDateString()}
+                <div className="flex gap-4 text-sm">
+                  <div className="flex items-center text-black gap-1"><FaTags className="text-primary text-sm" /> {vehicle.category}</div>
+                  <div className="flex items-center text-black gap-1"><HiOutlineLocationMarker className="text-primary text-sm" /> {vehicle.location.split(',')[0]}</div>
+                  <div className="flex items-center text-black gap-1"><FaChair className="text-primary text-sm" /> {vehicle.seatingCapacity} Seats</div>
                 </div>
 
-                <div className="flex items-baseline font-extrabold text-3xl text-secondary pt-2">
-                  <FaDollarSign className="text-primary text-xl mr-1" /> {price}{" "}
-                  <span className="text-base text-gray-500 font-normal">
-                    / Day
-                  </span>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <p className="flex items-center gap-1 font-extrabold text-2xl text-primary"> <FaDollarSign className='text-xl' /> {vehicle.pricePerDay} <span>/ Day</span> </p>
+                  <div className="flex items-center gap-1 text-xs"><MdOutlineDateRange className="text-sm" /> {new Date(vehicle.createdAt).toLocaleDateString()}  </div>
                 </div>
-              </div>
-
-              <div className="grid grid-cols-3 p-6 pt-0 border-t border-gray-100 gap-2">
-                <Link
-                  to={`/vehicle-details/${vehicle._id}`}
-                  className="btn btn-sm btn-primary text-white flex items-center gap-1 w-full"
-                >
-                  {" "}
-                  <FaEye /> Details{" "}
-                </Link>
-                <Link
-                  to={`/update-vehicle/${vehicle._id}`}
-                  className="btn btn-sm btn-warning text-white flex items-center gap-1 w-full"
-                >
-                  {" "}
-                  <FaEdit /> Update{" "}
-                </Link>
-                <button
-                  onClick={() =>
-                    handleDeleteVehicle(vehicle._id, vehicle.vehicleName)
-                  }
-                  className="btn btn-sm btn-error text-white flex items-center gap-1 w-full"
-                >
-                  {" "}
-                  <FaTrash /> Delete{" "}
-                </button>
               </div>
             </div>
-          );
-        })}
+
+            {/* Action Buttons */}
+            <div className="grid grid-cols-3 p-6 pt-0 border-t border-gray-100 gap-2">
+              <Link to={`/vehicle-details/${vehicle._id}`} className="btn-primary flex items-center gap-1 "><FaEye /> Details</Link>
+              <Link to={`/update-vehicle/${vehicle._id}`} className="btn btn-sm btn-warning text-white flex items-center gap-1 "><FaEdit /> Update</Link>
+              <button onClick={() => handleDeleteVehicle(vehicle._id, vehicle.vehicleName)} className="btn btn-sm btn-error text-white flex items-center gap-1 "><FaTrash /> Delete</button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
