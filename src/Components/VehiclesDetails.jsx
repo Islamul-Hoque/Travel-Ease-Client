@@ -1,195 +1,103 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLoaderData, Link } from "react-router";
-import {
-  FaStar,
-  FaChair,
-  FaDollarSign,
-  FaCheckCircle,
-  FaUsers,
-  FaCar,
-} from "react-icons/fa";
-import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
+import { FaStar, FaChair, FaDollarSign, FaCheckCircle, FaUsers, FaTags } from "react-icons/fa";
+import { HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
 import { MdOutlineDateRange } from "react-icons/md";
 import { format } from "date-fns";
-
 import { toast } from "react-toastify";
 import useAuth from "../Hooks/useAuth";
 import useAxios from "../Hooks/useAxios";
+import Spinner from "./Spinner";
 
 const VehicleDetails = () => {
-  const { user } = useAuth();
-  const data = useLoaderData();
+  const { user,loading } = useAuth()
+  const data = useLoaderData()
   const axiosInstance = useAxios()
-  const [isBooked, setIsBooked] = useState(false);
 
-  if (!data)
-    return <p className="text-center py-10 text-xl">vehicle details...</p>;
+  if (loading) return <Spinner/>
 
-  const { _id, vehicleName, ownerName, ownerPhoto, category, pricePerDay, location, seatingCapacity,  description, coverImage,createdAt, userEmail,
-    features = [],
-    rating = 0,
-    totalBookings = 0,
-    status = "active",
-  } = data;
+  const { _id, vehicleName, ownerName, ownerPhoto, category, pricePerDay, location, seatingCapacity, description, coverImage, createdAt, userEmail, features = [], rating = 0, totalBookings = 0, status = "active" } = data;
   const formattedDate = format(new Date(createdAt), "MM/dd/yyyy");
 
   const handleBookNow = () => {
-    const bookingData = {vehicleId: _id, vehicleName, category, pricePerDay,location, seatingCapacity, rating,coverImage,createdAt,
-      userEmail: user?.email,
-      bookingDate: new Date(),
-    };
-    axiosInstance
-    .post("/my-bookings", bookingData, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    .then((res) => {
-      if (res.data?.insertedId) {
-        toast.success(`🎉 Your booking for "${vehicleName}" is confirmed! Get ready to ride!`);
-        setIsBooked(true);
-      } else {
-        toast.warn("Booking request sent, but confirmation not received yet.");
+    const bookingData = { vehicleId: _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt,
+      userEmail: user.email, bookingDate: format(new Date(), "MM/dd/yyyy") };
+
+    axiosInstance.post("/my-bookings", bookingData, { 
+      headers: { "Content-Type": "application/json" }})
+      .then(data => {
+      if (data.data?.insertedId) {
+        toast.success(`🎉 Your booking for "${vehicleName}" is confirmed!`);
+      } else if (data.data.message) {
+        toast.error(data.data.message);
       }
     })
-    .catch((err) => {
-      const msg = err?.response?.data?.message || "Booking failed. Please try again.";
-      toast.error(msg);
-    });
-};
+      .catch(err => {
+        toast.error(err?.response.data.message);
+      })
+  }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10 min-h-screen">
-      <div className="bg-white shadow-2xl rounded-xl p-6 lg:p-10 space-y-8">
-        {/* Vehicle Main Section */}
-        <div className="lg:flex lg:space-x-10">
-          <div className="lg:w-2/3 mb-6 lg:mb-0 relative rounded-xl overflow-hidden shadow-lg border-2 border-gray-100">
-            <img
-              src={coverImage}
-              alt={vehicleName}
-              className="w-full h-full object-cover max-h-[500px]"
-            />
-            <div className="badge badge-primary absolute top-4 left-4 text-white text-sm font-semibold">
-              {category}
+  <div className="px-6 md:px-10 mx-auto py-12bg-gray-50 bg-gray-100">
+    <h2 className="text-[2rem] md:text-[2.8rem] text-black font-bold text-center py-12">Vehicle <span className='text-gradient'>Details</span></h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-14">
+        <div className="md:col-span-2 space-y-10">
+          <div className="bg-white p-6 rounded-xl shadow space-y-8">
+
+            <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm"> <img src={coverImage} className="w-full object-cover max-h-[550px]" alt={vehicleName}/> </div>
+
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">About this Vehicle</h3>
+              <p className="text-gray-700 leading-relaxed">{description}</p>
             </div>
-          </div>
 
-          <div className="lg:w-1/3 space-y-6">
-            <h1 className="text-3xl font-bold text-gray-800 border-b pb-2">
-              {vehicleName}
-            </h1>
+            {features.length > 0 && (
+              <div>
+                <h4 className="text-2xl font-bold text-gray-800 mb-3">Included Features</h4>
+                <div className="flex flex-wrap gap-2"> 
+                  { features.map((feature, index) => (
+                    <span key={index} className="flex items-center gap-1 bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"> <FaCheckCircle className="text-green-500" /> {feature} </span>))
+                  }
+                </div>
+              </div>
+            )}
 
-            <div className="flex justify-between items-center bg-gray-50 p-3 rounded-lg shadow-inner">
-              <p className="text-2xl font-extrabold text-secondary flex items-center gap-1">
-                <FaDollarSign className="text-primary" /> {pricePerDay}{" "}
-                <span className="text-base text-gray-500 font-normal">
-                  / Day
-                </span>
-              </p>
-              <div className="flex items-center text-lg text-primary font-bold gap-1">
-                <FaStar className="text-yellow-500" /> {rating.toFixed(1)}
+            <div>
+              <h4 className="text-2xl font-bold text-gray-800 mb-3 ">Meet the Host</h4>
+              <div className="flex items-center gap-5 p-4 border border-indigo-200 rounded-xl bg-indigo-50 shadow">
+                <img src={ownerPhoto} className="w-16 h-16 rounded-full object-cover border-4 border-white shadow" alt={ownerName} />
+                <div>
+                  <h4 className="font-bold text-lg text-gray-900">{ownerName}</h4>
+                  <p className="text-gray-600 text-sm flex items-center gap-1 mt-1"><HiOutlineMail className="text-indigo-600" /> {userEmail}</p>
+                </div>
               </div>
             </div>
 
-            <div className="text-gray-600 space-y-2">
-              <p className="flex justify-between font-medium">
-                <span>
-                  <FaUsers className="inline text-primary mr-1" /> Reviews:
-                </span>
-                <span className="font-bold text-gray-800">{totalBookings}</span>
-              </p>
-              <p className="flex justify-between font-medium">
-                <span>
-                  <MdOutlineDateRange className="inline text-primary mr-1" />{" "}
-                  Added Date:
-                </span>
-                <span className="font-bold text-gray-800">{formattedDate}</span>
-              </p>
-              <p className="flex justify-between font-medium">
-                <span>
-                  <FaChair className="inline text-primary mr-1" /> Seats:
-                </span>
-                <span className="font-bold text-gray-800">
-                  {seatingCapacity}
-                </span>
-              </p>
-              <p className="flex justify-between font-medium">
-                <span>
-                  <HiOutlineLocationMarker className="inline text-primary mr-1" />{" "}
-                  Location:
-                </span>
-                <span className="font-bold text-gray-800">{location}</span>
-              </p>
+          </div>
+        </div>
+
+      <div className="md:col-span-1">
+        <div className="sticky top-10 space-y-6">
+          <div className="bg-white p-8 rounded-xl shadow-lg  space-y-6">
+          <h1 className="text-[2rem] font-bold text-gray-900 mb-5">{vehicleName}</h1>
+            <div className="text-sm text-gray-700 space-y-1">
+              <div className="flex justify-between"><span><FaTags className="inline mr-1 text-primary"/> Category</span> <span className="font-medium">{category}</span> </div>
+              <div className="flex justify-between"><span><FaDollarSign className="inline mr-1 text-primary" /> Price</span> <span className="font-medium">{pricePerDay} <span>/ Day</span></span> </div>
+              <div className="flex justify-between"><span><FaStar className="inline mr-1 text-primary" /> Rating</span> <span className="font-medium text-yellow-600">{rating.toFixed(1)}</span> </div>
+              <div className="flex justify-between"><span><FaUsers className="inline mr-1 text-primary" /> Reviews</span><span className="font-medium">{totalBookings}</span></div>
+              <div className="flex justify-between"><span><MdOutlineDateRange className="inline mr-1 text-primary" /> Added</span><span className="font-medium">{formattedDate}</span></div>
+              <div className="flex justify-between"><span><FaChair className="inline mr-1 text-primary" /> Seats</span><span className="font-medium">{seatingCapacity}</span></div>
+              <div className="flex justify-between"><span><HiOutlineLocationMarker className="inline mr-1 text-primary" /> Location</span><span className="font-medium">{location}</span></div>
+              <div className="flex justify-between"><span><FaCheckCircle className="inline mr-1 text-primary" /> Status</span><span className="text-green-600">{status}</span></div>
             </div>
-
-            <button
-              onClick={handleBookNow}
-              className="btn btn-primary"
-              disabled={isBooked || status !== "active"}
-            >
-              {isBooked || status !== "active"
-                ? "Currently Booked"
-                : "Book Now"}
-            </button>
+            <div> <button onClick={handleBookNow} className="btn btn-primary-w-full">Book Now</button></div>
           </div>
-        </div>
-
-        {/* Vehicle Description */}
-        <div className="mt-8 border-t border-gray-200 pt-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b pb-1">
-            Vehicle Description
-          </h2>
-          <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
-            {description}
-          </p>
-        </div>
-
-        {/* Features */}
-        {features.length > 0 && (
-          <div className="mt-8">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-1">
-              Key Features Included
-            </h3>
-            <p className="text-gray-700 gap-4">
-              {features.map((feature, i) => (
-                <span
-                  key={i}
-                  className="flex items-center gap-1 bg-gray- 100 rounded-md px-2 py-1"
-                >
-                  <FaCheckCircle className="text-green-500" /> {feature}
-                </span>
-              ))}
-            </p>
-          </div>
-        )}
-
-        {/* Owner Info */}
-        <div className="mt-8 border-t border-gray-200 pt-6">
-          <h3 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-1">
-            Owner Information
-          </h3>
-          <div className="flex items-center gap-4 p-4 border-2 border-primary rounded-lg bg-blue-50 max-w-xl shadow-md">
-            <img
-              src={ownerPhoto}
-              alt={ownerName}
-              className="w-16 h-16 rounded-full object-cover border-2 border-primary"
-            />
-            <div>
-              <h4 className="font-bold text-xl text-gray-800">{ownerName}</h4>
-              <p className="text-gray-600 flex items-center gap-2 text-sm">
-                <HiOutlineMail className="text-primary" /> {userEmail}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Back Button */}
-        <div className="pt-6">
-          <Link to="/" className="btn btn-outline btn-primary w-full md:w-auto font-semibold" > {" "} &larr; Back to Vehicle Listings{" "} </Link>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+
+  )}
 
 export default VehicleDetails;
