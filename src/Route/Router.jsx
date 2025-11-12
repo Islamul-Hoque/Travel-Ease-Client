@@ -12,6 +12,7 @@ import MyBookings from "../Components/MyBookings";
 import VehiclesDetails from "../Components/VehiclesDetails";
 import UpdateVehicle from "../Components/UpdateVehicle";
 import HomeLayout from "../Layout/HomeLayout";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
 {
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
             path: "register",
             Component: Register,
         },
+        {
+            path:'*',
+            Component: ErrorPage
+            
+        }
     ],
 },
 ]);
