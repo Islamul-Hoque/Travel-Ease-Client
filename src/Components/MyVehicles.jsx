@@ -7,7 +7,7 @@ import Spinner from "./Spinner";
 import Swal from "sweetalert2";
 import useAuth from "../Hooks/useAuth";
 import useAxios from "../Hooks/useAxios.jsx";
-import { toast } from "react-toastify";
+import { format } from "date-fns";
 
 const MyVehicles = () => {
   const { user } = useAuth();
@@ -69,19 +69,14 @@ const MyVehicles = () => {
   if (vehicles.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center bg-gray-100">
-        <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center text-black mt-12">
-          No Vehicles Listed <span className='text-gradient'>Yet</span>
-        </h2>
-        <Link to="/add-vehicle" className="btn-primary mt-6 mb-14">
-          Add Your First Vehicle Now!
-        </Link>
-      </div>
-    );
+        <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center text-black mt-12"> No Vehicles Listed <span className='text-gradient'>Yet</span> </h2>
+        <Link to="/add-vehicle" className="btn-primary mt-6 mb-14"> Add Your First Vehicle Now! </Link>
+      </div>)
   }
 
   return (
     <div className="px-6 md:px-10 bg-gray-100">
-      <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center text-black py-12"> My <span className='text-gradient'>Listed Vehicles</span></h2>
+      <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center text-black py-12"> My Listed <span className='text-gradient'>Vehicles</span></h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-14">
         {vehicles.map((vehicle) => (
           <div key={vehicle._id} className="card w-full bg-white shadow-xl transition-all duration-300 transform hover:shadow-2xl border border-gray-100 rounded-2xl overflow-hidden flex flex-col group">
@@ -105,7 +100,7 @@ const MyVehicles = () => {
 
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <p className="flex items-center gap-1 font-extrabold text-2xl text-primary"> <FaDollarSign className='text-xl' /> {vehicle.pricePerDay} <span>/ Day</span> </p>
-                  <div className="flex items-center gap-1 text-xs"><MdOutlineDateRange className="text-sm" /> {new Date(vehicle.createdAt).toLocaleDateString()}  </div>
+                  <div className="flex items-center gap-1 text-xs"><MdOutlineDateRange className="text-sm" /> {format(new Date(vehicle.createdAt), "MM/dd/yyyy")}  </div>
                 </div>
               </div>
             </div>

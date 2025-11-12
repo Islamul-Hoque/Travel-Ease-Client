@@ -47,8 +47,9 @@ const Signup = () => {
             navigate('/')
 
             updateUser({displayName, photoURL})
-                .then(()=> {
-                    setUser({...user ,displayName, photoURL});
+            .then(()=> {
+                setUser({...user ,displayName, photoURL});
+                // setUser((prev)=> {return {...prev ,displayName, photoURL}});
                 })
                 .catch(error => {
                     toast.error(error.message)

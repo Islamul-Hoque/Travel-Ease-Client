@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react"
 import { Link, NavLink } from "react-router"
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify"
-// import logo from "../assets/logo.png"
 export default function Navbar() {
     const { user, signOutUser } = useContext(AuthContext)
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -25,7 +24,6 @@ export default function Navbar() {
 
         // isActive ? "font-bold pb-1 bg-[linear-gradient(125.07deg,#632ee3,#9f62f2_100%)] text-transparent bg-clip-text border-b-2 border-[#9f62f2] transition-all duration-300"
         // : "text-gray-700 hover:text-transparent hover:bg-[linear-gradient(125.07deg,#632ee3,#9f62f2_100%)] hover:bg-clip-text transition-all duration-300";
-
 
     const handleLogOut = () => {
         signOutUser()
@@ -57,10 +55,7 @@ export default function Navbar() {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"> {navLinks} </ul>
                 </div>
 
-                <Link to="/" className="flex items-center gap-2">
-                    {/* <div className="rounded-full"> <img className="w-[1.9rem]" src={logo} alt="" /> </div> */}
-                    <h1 className="text-[1.3rem] font-bold"> Travel<span className="text-gradient">Ease</span> </h1>
-                </Link>
+                <Link to="/" className="flex items-center gap-2"> <h1 className="text-[1.3rem] font-bold"> Travel<span className="text-gradient">Ease</span> </h1>   </Link>
             </div>
 
             <div className="navbar-center hidden md:flex">
@@ -77,16 +72,11 @@ export default function Navbar() {
                     <svg aria-label="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="swap-on fill-current w-6 h-6"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></g></svg>
                 </label>
 
-                {/* <input
-               onChange={(e) => handleTheme(e.target.checked)}
-               type="checkbox"
-               defaultChecked={localStorage.getItem('theme') === "dark"}
-           className="toggle"/> */}
-
                 {user ? (
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full"> <img src={user?.photoURL || "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"} alt="" /> </div>
+                            <div className="w-10 rounded-full"> 
+                                <img src={user?.photoURL || "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"} alt="" /> </div>
                         </div>
 
                         <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">

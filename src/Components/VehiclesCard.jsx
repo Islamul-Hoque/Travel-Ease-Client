@@ -6,12 +6,12 @@ import { MdOutlineDateRange } from 'react-icons/md';
 import { format } from 'date-fns';
 
 const VehiclesCard = ({ vehicle }) => {
-    const { _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt } = vehicle;
+    const { _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt } = vehicle
     const formattedDate = format(new Date(createdAt), "MM/dd/yyyy");
 
     return (
         <div className="card rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] group">
-            <div className="h-[15.2rem] md:h-[13.2rem]"> <img src={coverImage} className="w-full h-full object-cover transition duration-500 hover:scale-105"  alt={vehicleName} /> </div>
+            <div className="h-[15.2rem] md:h-[13.2rem] overflow-hidden"> <img src={coverImage} className="w-full h-full object-cover transition duration-500 hover:scale-105"  alt={vehicleName} /> </div>
 
             <div className="card-body p-6 flex flex-col justify-between">
                 <div className="space-y-4">

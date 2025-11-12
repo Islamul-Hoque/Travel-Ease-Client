@@ -91,8 +91,8 @@ const Footer = () => {
                 {/* Copyright Section (Full Width, Separated) */}
                 <div className='text-center pt-8 text-sm text-gray-500 border-t border-gray-700 mt-4'>
                     <p>
-                        &copy; {currentYear} **TravelEase**. All rights reserved. 
-                        Developed by a MERN Stack Expert.
+                        &copy; {currentYear} TravelEase. All rights reserved. 
+                       
                     </p>
                 </div>
             </div>
