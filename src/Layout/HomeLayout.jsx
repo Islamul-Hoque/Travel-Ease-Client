@@ -43,27 +43,3 @@ const HomeLayout = () => {
 };
 
 export default HomeLayout;
-
-// {
-//   vehicleName: "Toyota RAV4 Prime AWD",
-//   ownerName: "Mr. Karim Khan",
-//   ownerPhoto: "https://i.ibb.co/tofael_photo.jpg",
-//   userEmail: "karim.khan@example.com",
-//   category: "SUV",
-//   pricePerDay: 110,
-//   location: "Dhaka, Bangladesh",
-//   seatingCapacity: 5,
-//   features: [
-//     "All-Wheel Drive",
-//     "Hybrid Engine",
-//     "Sunroof",
-//     "Rear Camera"
-//   ],
-//   rating: 4.8,
-//   reviewsCount: 35,
-//   description: "A powerful and fuel-efficient SUV, perfect for both city driving and weekend getaways. It features a spacious interior, advanced safety technology, and a smooth hybrid powertrain. Ideal for families seeking comfort and reliability on long trips. Book now for an eco-friendly journey.",
-//   coverImage: "https://img.sm360.ca/images/newcar/ca/2025/toyota/rav4-hybride-branchable/se/suv/2025_toyota_rav4-prime_1-se_photos_004.jpg",
-//   userEmail: "karim.khan@example.com",
-//   createdAt: "2025-11-08T15:45:00.000Z",
-//   status: "active"
-// }

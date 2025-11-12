@@ -23,9 +23,9 @@ const AllVehicles = () => {
   if (loading) return <Spinner/>
 
   return (
-    <div className="px-6 md:px-10 bg-gray- 100 mx-auto">
+    <div className="px-6 md:px-10 bg-gray- 100 mx-auto mb-16">
       <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center text- black py-12">All Available <span className='text-gradient'>Vehicles ({vehicles.length})</span></h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-14 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         { vehicles.map(vehicle => (
           <VehiclesCard key={vehicle._id} vehicle={vehicle} />))
         }

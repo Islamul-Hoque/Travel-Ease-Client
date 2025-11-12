@@ -9,7 +9,6 @@ import AddVehicle from "../Components/AddVehicle";
 import PrivateRouter from "./PrivateRouter";
 import MyVehicles from "../Components/MyVehicles";
 import MyBookings from "../Components/MyBookings";
-import Spinner from "../Components/Spinner";
 import VehiclesDetails from "../Components/VehiclesDetails";
 import UpdateVehicle from "../Components/UpdateVehicle";
 import HomeLayout from "../Layout/HomeLayout";
@@ -18,7 +17,6 @@ const router = createBrowserRouter([
 {
     path: "/",
     Component: RootLayout,
-    HydrateFallback: <Spinner/>,
     children: [
         {
         index: true,

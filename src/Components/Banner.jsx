@@ -7,22 +7,22 @@ const slides = [
     {
         slogan: "Your Next Adventure is Just a Click Away",
         subtitle:"Whether it's an inner-city commute or a long road trip, book the perfect vehicle for your needs today.",
-        image: "https://images4.alphacoders.com/112/1129817.jpg",
+        image: "https://i.ibb.co.com/23C8mc8p/1129817.jpg",
     },
     {
         slogan: "Effortless Travel, Zero Hassle",
         subtitle: "Access verified vehicles from trusted owners and manage your entire trip with our easy-to-use tools.",
-        image: "https://cimg3.ibsrv.net/ibimg/hgm/1920x1080-1/100/768/audi-e-tron_100768331.jpg",
+        image: "https://i.ibb.co.com/3YsVd2mD/audi-e-tron-100768331.jpg",
     },
     {
         slogan: "Got a Vehicle? Start Earning Now",
         subtitle: "List your unused car on our platform and rent it out to reliable customers, growing your income effortlessly.",
-        image: "https://renty.ae/uploads/car/photo/l/black_mercedes-s_2022_5255_main_efd3732b6f6d8eeb32efceb88c9617ae.jpg",
+        image: "https://i.ibb.co.com/35FCC8ww/black-mercedes-jpg.png",
     },
     {
         slogan: "Explore a World of Categories",
         subtitle:"From compact Sedans to rugged SUVs and eco-friendly Electric options, find the exact ride for your journey.",
-        image: "https://images7.alphacoders.com/124/1243224.jpg",
+        image: "https://i.ibb.co.com/rGLbSWWD/1243224.jpg",
     },
     ];
 

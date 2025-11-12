@@ -1,245 +1,105 @@
-// src/Components/AddVehicle.jsx
-
 import React, { useState } from "react";
 import useAuth from "../Hooks/useAuth";
-import {
-  FaCar,
-  FaUser,
-  FaCamera,
-  FaDollarSign,
-  FaMapMarkerAlt,
-  FaChair,
-  FaListAlt,
-  FaImage,
-  FaInfoCircle,
-} from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import useAxios from "../Hooks/useAxios.jsx";
+import Spinner from "./Spinner.jsx";
+import { format } from "date-fns";
 
-const VEHICLE_CATEGORIES = ["Sedan", "SUV", "Electric", "Van"];
+const categories = ["Sedan", "SUV", "Electric", "Van"];
 
 const AddVehicle = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosInstance = useAxios();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
+  if(loading) return <Spinner/>
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    const newVehicleData = {
+      vehicleName: e.target.vehicleName.value,
+      category: e.target.category.value,
+      location: e.target.location.value,
+      description: e.target.description.value,
+      coverImage: e.target.coverImage.value,
+      ownerName: user?.displayName,
+      ownerPhoto: user?.photoURL,
+      userEmail: user?.email,
+      status: "active",
+      reviewsCount: 0,
+      rating: 0,
+      createdAt: format(new Date(), "dd/MM/yyyy"),
+      pricePerDay: parseInt(e.target.pricePerDay.value),
+      seatingCapacity: parseInt(e.target.seatingCapacity.value),
+      features: e.target.features.value.split(",").map(feature => feature.trim())
+    }
 
-    const vehicleName = e.target.vehicleName.value;
-    const category = e.target.category.value;
-    const pricePerDay = e.target.pricePerDay.value;
-    const location = e.target.location.value;
-    const seatingCapacity = e.target.seatingCapacity.value;
-    const features = e.target.features.value;
-    const description = e.target.description.value;
-    const coverImage = e.target.coverImage.value;
-
-    const ownerName = e.target.ownerName.value || user?.displayName;
-    const ownerPhoto = e.target.ownerPhoto.value || user?.photoURL;
-    const userEmail = user?.email;
-
-    const createdAt = new Date().toISOString();
-    const status = "active";
-    const rating = 0;
-    const reviewsCount = 0;
-    const totalBookings = 0;
-
-const newVehicleData = { vehicleName, category, location, description, coverImage, ownerName, ownerPhoto, userEmail, createdAt, status, rating, reviewsCount, totalBookings, pricePerDay: parseInt(pricePerDay), seatingCapacity: parseInt(seatingCapacity), features: features.split(",").map(f => f.trim()) };
-
-    axiosInstance
-      .post("/add-vehicle", newVehicleData, 
-        { headers: { "Content-Type": "application/json" }
-      } )
-      .then((data) => {
-        if (data.data.insertedId) {
-          toast.success(`"${vehicleName}" has been added successfully! 🚗`);
-          e.target.reset();
-        }
+    axiosInstance.post("/add-vehicle", newVehicleData,{ headers: { "Content-Type": "application/json" } })
+      .then((data) => { if (data.data.insertedId) { 
+        toast.success(`"${newVehicleData.vehicleName}" has been added successfully!`)
+        e.target.reset() } 
       })
-      .catch((err) => {
-        toast.error(`Failed to add ${vehicleName}. Please try again! ❌`);
+      .catch((err) => { 
+        toast.error(`Failed to add ${newVehicleData.vehicleName}. Please try again!`)
       })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+    }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 sm:p-8">
-      <div className="max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-2xl">
-        <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-2">
-          {" "}
-          Add New <span className="text-primary">Vehicle</span>{" "}
-        </h1>
-
+    <div className="px-6 md:px-10">
+      <div className=" mx-auto p-8 rounded-2xl shadow my-16">
+        <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center mb-8 mt-3">Add New <span className='text-gradient'>Vehicle</span></h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
             <div>
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaCar /> Vehicle Name
-              </label>
-              <input
-                type="text"
-                name="vehicleName"
-                placeholder="e.g. Toyota Aqua"
-                className="input input-bordered w-full"
-                required
-              />
+              <label className=" label font-medium mb-1">Vehicle Name</label>
+              <input type="text" name="vehicleName" placeholder="e.g. Toyota Aqua" className="input w-full" required />
             </div>
-
             <div>
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                Category
-              </label>
-              <select
-                name="category"
-                defaultValue=""
-                className="select select-bordered w-full"
-                required
-              >
-                <option value="" disabled>
-                  Select Vehicle Type
-                </option>
-                {VEHICLE_CATEGORIES.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
+              <label className=" label font-medium mb-1">Category</label>
+              <select name="category" className="select select-bordered w-full" required>
+                <option value="" disabled>Select Vehicle Type</option>
+                  { categories.map( category => ( <option key={category} value={category}> {category} </option>))}
               </select>
-            </div>
-
+              </div>
             <div>
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaDollarSign /> Price per Day (BDT)
-              </label>
-              <input
-                type="number"
-                name="pricePerDay"
-                placeholder="e.g. 3500"
-                className="input input-bordered w-full"
-                required
-              />
+              <label className=" label font-medium mb-1">Price per Day ($)</label>
+              <input type="number" name="pricePerDay" placeholder="e.g. 3500" className="input    w-full" required />
             </div>
-
             <div>
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaChair /> Seating Capacity
-              </label>
-              <input
-                type="number"
-                name="seatingCapacity"
-                placeholder="e.g. 5"
-                className="input input-bordered w-full"
-                required
-              />
+              <label className=" label font-medium mb-1">Seating Capacity</label>
+              <input type="number" name="seatingCapacity" placeholder="e.g. 5" className="input   w-full" required />
             </div>
-
             <div>
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaMapMarkerAlt /> Location (City, Country)
-              </label>
-              <input
-                type="text"
-                name="location"
-                placeholder="e.g. Dhaka, Bangladesh"
-                className="input input-bordered w-full"
-                required
-              />
+              <label className=" label font-medium mb-1">Location (City, Country)</label>
+              <input type="text" name="location" placeholder="e.g. Dhaka, Bangladesh" className="input w-full" required />
             </div>
-
             <div>
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaListAlt /> Features (comma separated)
-              </label>
-              <input
-                type="text"
-                name="features"
-                placeholder="e.g. AC, GPS, Bluetooth"
-                className="input input-bordered w-full"
-                required
-              />
+              <label className=" label font-medium mb-1">Features (comma separated)</label>
+              <input type="text" name="features" placeholder="e.g. AC, GPS, Cruise Control" className="input w-full" required />
             </div>
-
             <div className="md:col-span-2">
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaImage /> Cover Image URL
-              </label>
-              <input
-                type="text"
-                name="coverImage"
-                placeholder="https://example.com/car.jpg"
-                className="input input-bordered w-full"
-                required
-              />
+              <label className="label font-semibold mb-1">Cover Image URL</label>
+              <input type="text" name="coverImage" placeholder="https://..." className="input  w-full" required />
             </div>
-
             <div className="md:col-span-2">
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaInfoCircle /> Description
-              </label>
-              <textarea
-                name="description"
-                placeholder="Write a short description about the vehicle features..."
-                className="textarea textarea-bordered w-full h-24"
-                rows={3}
-                required
-              ></textarea>
+              <label className="label font-semibold mb-1">Description</label>
+              <textarea name="description" placeholder="Write a short description about the vehicle features..." className="textarea textarea-bordered w-full h-24" rows={3} required></textarea>
             </div>
           </div>
-
-          <h2 className="text-xl font-bold text-gray-800 pt-4 border-t border-gray-200">
-            Owner Information
-          </h2>
-
+          <h2 className="text-2xl font-bold">Owner Information</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
             <div>
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaUser /> Owner Name (Read Only)
-              </label>
-              <input
-                type="text"
-                name="ownerName"
-                defaultValue={user?.displayName || "N/A"}
-                className="input input-bordered w-full bg-gray-50 cursor-not-allowed"
-                readOnly
-              />
+              <label className="label font-semibold mb-1">Owner Name (Read Only)</label>
+              <input type="text" name="ownerName" defaultValue={user?.displayName } className="input w-full cursor-not-allowed" readOnly />
             </div>
-
             <div>
-              <label className="label font-semibold text-gray-700 flex items-center gap-2">
-                <FaCamera /> Owner Photo URL (Read Only)
-              </label>
-              <input
-                type="text"
-                name="ownerPhoto"
-                defaultValue={user?.photoURL || "N/A"}
-                className="input input-bordered w-full bg-gray-50 cursor-not-allowed"
-                readOnly
-              />
+              <label className="label font-semibold mb-1">Owner Photo URL (Read Only)</label>
+              <input type="text" name="ownerPhoto" defaultValue={user?.photoURL } className="input w-full cursor-not-allowed" readOnly />
             </div>
-
-            <input
-              type="hidden"
-              name="userEmail"
-              defaultValue={user?.email || ""}
-            />
+            <input type="hidden" name="userEmail" defaultValue={user?.email} />
           </div>
-
-          <div className="form-control mt-8 pt-4 border-t border-gray-200">
-            <button
-              type="submit"
-              className="btn btn-primary-w-full mt-4"
-              disabled={loading}
-            >
-              {" "}
-              {loading ? "Adding Vehicle..." : "Add Vehicle"}{" "}
-            </button>
-          </div>
+          <div className="form-control"><button type="submit" className="btn-primary-w-full mt-4" >Add Vehicle</button></div>
         </form>
       </div>
     </div>

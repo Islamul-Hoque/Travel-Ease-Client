@@ -7,11 +7,11 @@ import { format } from 'date-fns';
 
 const VehiclesCard = ({ vehicle }) => {
     const { _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt } = vehicle
-    const formattedDate = format(new Date(createdAt), "MM/dd/yyyy");
+    const formattedDate = format(new Date(createdAt), "dd/MM/yyyy");
 
     return (
-        <div className="card rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] group">
-            <div className="h-[15.2rem] md:h-[13.2rem] overflow-hidden"> <img src={coverImage} className="w-full h-full object-cover transition duration-500 hover:scale-105"  alt={vehicleName} /> </div>
+        <div className="card rounded-xl overflow-hidden shadow  hover:shadow-md transition duration-300 transform hover:scale-[1.02] group">
+            <div className="h-[15.2rem] md:h-[13.2rem] overflow-hidden"> <img src={coverImage} className="w-full h-full object-cover transition duration-500 hover:scale-105" alt={vehicleName} /> </div>
 
             <div className="card-body p-6 flex flex-col justify-between">
                 <div className="space-y-4">
@@ -26,7 +26,7 @@ const VehiclesCard = ({ vehicle }) => {
                         <div className="flex items-center gap-1">  <FaChair className="text-primary text-sm" /> {seatingCapacity} Seats  </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div className="flex items-center justify-between ">
                         <p className="flex items-center gap-1 font-extrabold text-2xl text-primary">  <FaDollarSign className='text-xl' /> {pricePerDay} <span className=''>/ Day</span> </p>
                         <div className="flex items-center gap-1 text-xs "> <MdOutlineDateRange className=" text-sm" /> {formattedDate} </div>
                     </div>

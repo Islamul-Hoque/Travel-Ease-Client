@@ -18,7 +18,7 @@ const topCategories = [
         id: 2,
         name: "Van",
         description: "Ideal for groups, business trips, or large families — vans provide extra space, flexibility, and comfort for long-distance or multi-person travel.",
-        imageUrl: "https://imgcdn.oto.com/large/gallery/exterior/38/801/toyota-hiace-front-angle-low-view-454261.jpg"
+        imageUrl: "https://i.ibb.co.com/WWjrs82t/toyota-hiace-front-angle-low-view-454261.jpg"
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ const topCategories = [
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12">
             { 
                 topCategories.map( category => (
-                <div key={category.id} className="rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                <div key={category.id} className="rounded-xl overflow-hidden shadow-md  hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
                     <div className="h-[15.2rem] md:h-[13.2rem]"> <img src={category.imageUrl} className="w-full h-full object-cover transition duration-500 hover:scale-105" alt={category.name} /> </div>
                     <div className="p-6 text-center">
                         <h3 className="text-[1.3rem] font-bold text-center mb-3">{category.name}</h3>
