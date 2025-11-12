@@ -62,8 +62,8 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen  bg-gray-100">
-            <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem] bg-white overflow-hidden shadow">
+        <div className="flex justify-center items-center min-h-screen  ">
+            <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem] overflow-hidden shadow">
                 <h2 className="text-3xl font-bold text-center pt-6"> Login to <span className="text-gradient">TravelEase</span></h2>
                 <div className="card-body">
                     <form onSubmit={ handleLogin }>
@@ -79,12 +79,12 @@ const Login = () => {
 
                             { error && <p className='text-red-500 text-[0.8rem]'> {error} </p> }
 
-                            <div className="flex justify-end text-sm">  <Link className="text-gradient hover:underline"> Forgot Password?</Link></div>
+                            <div className="flex justify-end text-sm">  <Link className="text-gradient"> Forgot Password?</Link></div>
 
-                            <button type="submit" className="btn-primary-w-full mt-4" >  Login </button>
+                            <button type="submit" className="btn-primary-w-full mt-4">Login</button>
                         </fieldset>
                     </form>
-                    <p className="text-gray-500 text-center"> Don’t have an account?{" "} <Link to="/register" className="text-gradient font-medium " > Sign Up </Link></p>
+                    <p className="text-gray-500 text-center"> Don’t have an account?{" "} <Link to="/register" className="text-gradient font-medium"> Sign Up </Link></p>
 
                     <div className="flex items-center gap-3 ">
                         <hr className="flex-1 border-gray-200" />

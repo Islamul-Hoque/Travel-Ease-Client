@@ -49,7 +49,6 @@ const Signup = () => {
             updateUser({displayName, photoURL})
             .then(()=> {
                 setUser({...user ,displayName, photoURL});
-                // setUser((prev)=> {return {...prev ,displayName, photoURL}});
                 })
                 .catch(error => {
                     toast.error(error.message)
@@ -82,8 +81,8 @@ const Signup = () => {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen pt-12 pb-16 bg-gray-100">
-            <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem] bg-white overflow-hidden shadow">
+        <div className="flex justify-center items-center min-h-screen pt-12 pb-16 ">
+            <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem]  overflow-hidden shadow">
                 <h2 className="text-3xl font-bold text-center pt-6"> Sign Up for <span className="text-gradient">TravelEase</span></h2>   
                 <div className="card-body">
                     <form onSubmit={ handleRegister }>
@@ -105,11 +104,11 @@ const Signup = () => {
 
                             { error && <p className='text-red-500 text-[0.8rem]'> {error} </p> }
 
-                            <button type="submit" className="btn-primary-w-full mt-4" >  Sign Up </button>
+                            <button type="submit" className="btn-primary-w-full mt-4">Sign Up</button>
                         </fieldset>
                     </form>
 
-                    <p className="text-gray-500 text-center"> Already have an account?  <Link to="/login" className="text-gradient font-medium hover:link" >  Login </Link></p>
+                    <p className="text-gray-500 text-center">Already have an account? <Link to="/login" className="text-gradient font-medium hover:link" >  Login </Link></p>
 
                     <div className="flex items-center gap-3 ">
                         <hr className="flex-1 border-gray-200" />

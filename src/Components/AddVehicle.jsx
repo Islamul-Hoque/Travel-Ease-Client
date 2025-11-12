@@ -47,7 +47,7 @@ const AddVehicle = () => {
 
   return (
     <div className="px-6 md:px-10">
-      <div className=" mx-auto p-8 rounded-2xl shadow my-16">
+      <div className=" mx-auto p-8 rounded-2xl shadow-sm my-16">
         <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center mb-8 mt-3">Add New <span className='text-gradient'>Vehicle</span></h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
