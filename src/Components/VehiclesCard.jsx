@@ -1,74 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router'; 
-import { FaDollarSign, FaStar, FaChair } from 'react-icons/fa'; 
-import { HiOutlineLocationMarker } from 'react-icons/hi'; 
-import { MdOutlineDateRange } from 'react-icons/md'; 
+import { Link } from 'react-router';
+import { FaDollarSign, FaStar, FaChair, FaTags } from 'react-icons/fa';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { MdOutlineDateRange } from 'react-icons/md';
+import { format } from 'date-fns';
 
 const VehiclesCard = ({ vehicle }) => {
     const { _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt } = vehicle;
-
-    const normalizedPrice = pricePerDay?.$numberInt ? parseInt(pricePerDay.$numberInt) : pricePerDay;
-
-    if (!_id) return null;
+    const formattedDate = format(new Date(createdAt), "MM/dd/yyyy");
 
     return (
-        <div className="card w-full bg-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:bg-gray-50 border border-transparent hover:border-primary rounded-2xl overflow-hidden group">
-            
-            <figure className='relative h-60 w-full overflow-hidden'>
-                <img 
-                    src={coverImage} 
-                    alt={vehicleName} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                />
-                <div className="badge badge-lg badge-accent absolute top-4 left-4 text-white text-sm font-semibold p-3 shadow-md">
-                    {category}
-                </div>
-            </figure>
+        <div className="card rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] group">
+            <div className="h-[15.2rem] md:h-[13.2rem]"> <img src={coverImage} className="w-full h-full object-cover transition duration-500 hover:scale-105"  alt={vehicleName} /> </div>
 
-            <div className="card-body p-6 space-y-4">
-                
-                <div className='flex justify-between items-start'>
-                    <h2 className="card-title text-2xl font-extrabold text-gray-900 hover:text-primary transition-colors leading-snug">
-                        {vehicleName}
-                    </h2>
-                    <div className='flex items-center gap-1 text-primary font-bold text-lg'>
-                        <FaStar className='text-yellow-500 text-base' /> {rating}
-                    </div>
-                </div>
-
-                <div className="flex flex-wrap gap-x-6 gap-y-2 text-gray-600 text-base">
-                    
-                    <div className="flex items-center gap-1 bg-gray-50 p-1 px-2 rounded-full group-hover:bg-white">
-                        <HiOutlineLocationMarker className="text-primary text-lg" /> 
-                        <span className='font-medium text-sm'>{location.split(',')[0]}</span>
-                    </div>
-                    
-                    <div className="flex items-center gap-1 bg-gray-50 p-1 px-2 rounded-full group-hover:bg-white">
-                        <FaChair className="text-primary text-sm" /> 
-                        <span className='font-medium text-sm'>{seatingCapacity} Seats</span>
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    
-                    <div className="flex flex-col">
-                        <span className='text-sm text-gray-500'>Price/Day</span>
-                        <p className="flex items-baseline font-extrabold text-3xl text-secondary">
-                            <FaDollarSign className='text-primary text-xl mr-1'/> {normalizedPrice}
-                        </p>
+            <div className="card-body p-6 flex flex-col justify-between">
+                <div className="space-y-4">
+                    <div className='flex justify-between items-start'>
+                        <h2 className="card-title text-2xl font-extrabold leading-snug"> {vehicleName} </h2>
+                        <div className='flex items-center gap-1 text-primary font-bold text-lg'> <FaStar className='text-yellow-500 text-base' /> {Number(rating).toFixed(1)} </div>
                     </div>
 
-                    <Link to={`/vehicle-details/${_id}`} className="btn btn-primary text-white font-semibold shadow-md hover:shadow-lg">  View Details </Link>
+                    <div className="flex gap-4 text-sm">
+                        <div className="flex items-center gap-1"> <FaTags className="text-primary text-sm" /> {category} </div>
+                        <div className="flex items-center gap-1">  <HiOutlineLocationMarker className="text-primary text-sm" /> {location.split(',')[0]}</div>
+                        <div className="flex items-center gap-1">  <FaChair className="text-primary text-sm" /> {seatingCapacity} Seats  </div>
+                    </div>
 
-                </div>
-
-                <div className="flex justify-end pt-2">
-                    <div className="flex items-center gap-1 text-xs text-gray-500">
-                        <MdOutlineDateRange className="text-gray-400 text-sm" /> 
-                        Added: {new Date(createdAt).toLocaleDateString()} 
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                        <p className="flex items-center gap-1 font-extrabold text-2xl text-primary">  <FaDollarSign className='text-xl' /> {pricePerDay} <span className=''>/ Day</span> </p>
+                        <div className="flex items-center gap-1 text-xs "> <MdOutlineDateRange className=" text-sm" /> {formattedDate} </div>
                     </div>
                 </div>
-
+                <Link to={`/vehicle-details/${_id}`} className="btn-primary-w-full mt-2" > View Details </Link>
             </div>
         </div>
     );
