@@ -96,7 +96,7 @@ const MyVehicles = () => {
 
                 <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
                   <p className="flex items-center gap-1 font-extrabold text-2xl text-primary"> <FaDollarSign className='text-xl' /> {vehicle.pricePerDay} <span>/ Day</span> </p>
-                  <div className="flex items-center gap-1 text-xs"><MdOutlineDateRange className="text-sm" /> {format(new Date(vehicle.createdAt), "dd/MM/yyyy")}  </div>
+                  <div className="flex items-center gap-1 text-xs"><MdOutlineDateRange className="text-sm" /> {format(new Date(vehicle.createdAt), "MM/dd/yyyy")}  </div>
                 </div>
               </div>
             </div>

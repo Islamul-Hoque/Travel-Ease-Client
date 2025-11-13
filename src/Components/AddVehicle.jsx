@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useAuth from "../Hooks/useAuth";
-import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import useAxios from "../Hooks/useAxios.jsx";
 import Spinner from "./Spinner.jsx";
@@ -11,7 +10,6 @@ const categories = ["Sedan", "SUV", "Electric", "Van"];
 const AddVehicle = () => {
   const { user, loading } = useAuth();
   const axiosInstance = useAxios();
-  // const navigate = useNavigate();
 
   if(loading) return <Spinner/>
 
@@ -29,7 +27,7 @@ const AddVehicle = () => {
       status: "active",
       reviewsCount: 0,
       rating: 0,
-      createdAt: format(new Date(), "dd/MM/yyyy"),
+      createdAt: new Date(),
       pricePerDay: parseInt(e.target.pricePerDay.value),
       seatingCapacity: parseInt(e.target.seatingCapacity.value),
       features: e.target.features.value.split(",").map(feature => feature.trim())
@@ -64,11 +62,11 @@ const AddVehicle = () => {
               </div>
             <div>
               <label className=" label font-medium mb-1">Price per Day ($)</label>
-              <input type="number" name="pricePerDay" placeholder="e.g. 3500" className="input bg-gray-50 dark:bg-gray-700 w-full" required />
+              <input type="number" name="pricePerDay" placeholder="e.g. 270" className="input bg-gray-50 dark:bg-gray-700 w-full" required />
             </div>
             <div>
               <label className=" label font-medium mb-1">Seating Capacity</label>
-              <input type="number" name="seatingCapacity" placeholder="e.g. 5" className="input bg-gray-50 dark:bg-gray-700 w-full" required />
+              <input type="number" name="seatingCapacity" placeholder="e.g. 4" className="input bg-gray-50 dark:bg-gray-700 w-full" required />
             </div>
             <div>
               <label className=" label font-medium mb-1">Location (City, Country)</label>
@@ -76,11 +74,11 @@ const AddVehicle = () => {
             </div>
             <div>
               <label className=" label font-medium mb-1">Features (comma separated)</label>
-              <input type="text" name="features" placeholder="e.g. AC, GPS, Cruise Control" className="input bg-gray-50 dark:bg-gray-700 w-full" required />
+              <input type="text" name="features" placeholder="e.g. Panoramic Sunroof, 360° Camera" className="input bg-gray-50 dark:bg-gray-700 w-full" required />
             </div>
             <div className="md:col-span-2">
               <label className="label font-semibold mb-1">Cover Image URL</label>
-              <input type="text" name="coverImage" placeholder="https://..." className="input bg-gray-50 dark:bg-gray-700 w-full" required />
+              <input type="text" name="coverImage" placeholder="Cover image URL" className="input bg-gray-50 dark:bg-gray-700 w-full" required />
             </div>
             <div className="md:col-span-2">
               <label className="label font-semibold mb-1">Description</label>

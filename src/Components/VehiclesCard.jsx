@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 
 const VehiclesCard = ({ vehicle }) => {
     const { _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt } = vehicle
-    const formattedDate = format(new Date(createdAt), "dd/MM/yyyy");
+    const formattedDate = format(new Date(createdAt), "MM/dd/yyyy");
 
     return (
         <div className="card rounded-xl overflow-hidden shadow hover:shadow-lg dark:hover:shadow-[0_0_10px_rgba(255,255,255,0.05)] transition duration-300 transform hover:scale-[1.02] group bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">

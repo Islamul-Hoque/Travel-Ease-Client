@@ -17,11 +17,11 @@ const VehicleDetails = () => {
   if (loading) return <Spinner/>
 
   const { _id, vehicleName, ownerName, ownerPhoto, reviewsCount, category, pricePerDay, location, seatingCapacity, description, coverImage, createdAt, userEmail, features = [], rating = 0, totalBookings = 0, status = "active" } = data;
-  const formattedDate = format(new Date(createdAt), "dd/MM/yyyy");
+  const formattedDate = format(new Date(createdAt), "MM/dd/yyyy");
 
   const handleBookNow = () => {
     const bookingData = { vehicleId: _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt,reviewsCount,
-      userEmail: user.email, bookingDate: format(new Date(), "dd/MM/yyyy") };
+      userEmail: user.email, bookingDate: format(new Date(), "MM/dd/yyyy") };
 
     axiosInstance.post("/my-bookings", bookingData, { 
       headers: { "Content-Type": "application/json" }})

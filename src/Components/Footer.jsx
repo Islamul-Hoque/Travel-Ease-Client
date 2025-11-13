@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="pb-10 border-t pt-6 border-gray-50 dark:border-gray-500"><p className="text-center text-sm pb-10 md:pb-0"> &copy; 2025 TravelEase. All rights reserved. </p></div>
+      <div className="pb-10 border-t pt-13 md:pt-10 border-gray-300 dark:border-gray-500"><p className="text-center text-sm pb-10 md:pb-0"> &copy; 2025 TravelEase. All rights reserved. </p></div>
     </footer>
   );
 };
