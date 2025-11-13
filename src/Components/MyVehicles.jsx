@@ -50,7 +50,6 @@ const MyVehicles = () => {
             }
           })
           .catch((err) => {
-            console.error("Delete Vehicle Error:", err);
             Swal.fire({
               title: "Error!",
               text: "Failed to delete vehicle.",

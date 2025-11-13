@@ -3,6 +3,8 @@
 ## Live Demo
 [Visit Live Site](https://travelease-4bacc.web.app)
 
+--- 
+
 ## Features
 - Users can **explore and book vehicles** with detailed information.  
 - Authenticated users can **add, update, and delete their own vehicle listings**.  
@@ -13,6 +15,7 @@
 - **Toast notifications** have been added to display **success/error messages.**
 - Display of **recent 6 vehicles** dynamically on the homepage.
 
+--- 
 
 ## Tech Stack
 - **Frontend:** React.js, Tailwind CSS

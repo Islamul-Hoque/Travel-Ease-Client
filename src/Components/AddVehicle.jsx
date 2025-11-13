@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import useAxios from "../Hooks/useAxios.jsx";
 import Spinner from "./Spinner.jsx";
-import { format } from "date-fns";
 
 const categories = ["Sedan", "SUV", "Electric", "Van"];
 
