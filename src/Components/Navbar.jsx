@@ -6,7 +6,6 @@ export default function Navbar() {
     const { user, signOutUser } = useContext(AuthContext)
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
-
     useEffect(() => {
         const html = document.querySelector("html");
         html.setAttribute("data-theme", theme);
@@ -21,9 +20,6 @@ export default function Navbar() {
     const activeClass = ({ isActive }) =>
         isActive ? "font-bold pb-1 text-[#632ee3]  border-b-2 border-[#632ee3] transition-colors duration-200" : 
         "text-gray-700 hover:text-[#632ee3] transition-colors duration-200";
-
-        // isActive ? "font-bold pb-1 bg-[linear-gradient(125.07deg,#632ee3,#9f62f2_100%)] text-transparent bg-clip-text border-b-2 border-[#9f62f2] transition-all duration-300"
-        // : "text-gray-700 hover:text-transparent hover:bg-[linear-gradient(125.07deg,#632ee3,#9f62f2_100%)] hover:bg-clip-text transition-all duration-300";
 
     const handleLogOut = () => {
         signOutUser()
@@ -47,7 +43,7 @@ export default function Navbar() {
     );
 
     return (
-        <div className="navbar  px-6 md:px-8 shadow-md sticky top-0 z-40">
+        <div className="navbar bg-gray-100 dark:bg-gray-900 px-6 md:px-8 shadow-md sticky top-0 z-40">
 
             <div className="navbar-start">
                 <div className="dropdown">

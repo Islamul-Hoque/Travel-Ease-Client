@@ -1,55 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router';
-import { FaInstagram, FaFacebookF, FaPinterestP} from 'react-icons/fa'; 
+import React from "react";
+import { Link } from "react-router";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
-    return (
-        <footer className="bg-gray-800 border-t border-gray-100">
-            <div className="mx-auto px-6 md:px-8 py-12">
+  return (
+    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 px-6 md:px-10">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-10 py-10">
+        <div className="flex flex-col space-y-2 col-span-2">
+          <Link> <span className="text-[2.25rem] font-extrabold tracking-wider text-gray-900 dark:text-gray-200">Travel<span className="text-gradient">Ease</span> </span></Link>
+          <p className="text-sm"> Your ultimate hub for seamless vehicle rentals and trip planning. Discover, book, and manage your rides effortlessly, all in one place. </p>
+        </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
-                    <div className="col-span-2 space-y-2 -mt-2">
-                        <Link to="/" className="flex items-center gap-3">
-                            <span className="text-[2.25rem] font-extrabold tracking-wider">Travel<span className='text-gradient'>Ease</span></span>
-                        </Link>
-                        <p className="text-[1.13rem] text-gray-600 border-lime-400 font-semibold"> Your trusted platform for seamless vehicle booking and trip management worldwide. Drive smart, travel easy. </p>
-                    </div>
+        <div className="col-span-1">
+          <h4 className="text-[1.13rem] font-bold mb-2 text-gray-900 dark:text-gray-200">Quick Links</h4>
+          <nav className="flex flex-col gap-1 text-gray-700 dark:text-gray-400">
+            <Link to="/" className="hover:text-primary transition-colors duration-200">Home</Link>
+            <Link to="/all-vehicles" className="hover:text-primary transition-colors duration-200">All Vehicles</Link>
+            <Link to="/register" className="hover:text-primary transition-colors duration-200">Register</Link>
+          </nav>
+        </div>
 
-                    <div>
-                        <h4 className="text-[1.13rem] font-bold mb-2 text-gradient">Quick Links</h4>
-                        <nav className="flex flex-col gap-1 text-gray-700">
-                            <Link to="/" className="link link-hover hover:text-white transition-colors">Top Categories</Link>
-                            <Link to="/all-vehicles" className="link link-hover hover:text-white transition-colors">All Vehicles</Link>
-                            <Link to="/login" className="link link-hover hover:text-white transition-colors">Login / Register</Link>
-                        </nav>
-                    </div>
+        <div className="col-span-1">
+          <h4 className="text-[1.13rem] font-bold mb-2 text-gray-900 dark:text-gray-200">Resources</h4>
+          <nav className="flex flex-col gap-1 text-gray-700 dark:text-gray-400">
+            <Link to="/about" className="hover:text-primary transition-colors duration-200">About Us</Link>
+            <Link to="/privacy" className="hover:text-primary transition-colors duration-200">Privacy Policy</Link>
+            <Link to="/contact" className="hover:text-primary transition-colors duration-200">Contact</Link>
+          </nav>
+        </div>
 
-                    <div>
-                        <h4 className="text-[1.13rem] font-bold mb-2 text-gradient ">Resources</h4>
-                        <nav className="flex flex-col gap-1 text-gray-700">
-                            <Link to="/about" className="link   link-hover hover:text-white transition-colors">About Us</Link>
-                            <Link to="/privacy" className="link link-hover hover:text-white transition duration-200">Privacy Policy</Link>
-                            <Link to="/contact" className="link link-hover hover:text-white transition-colors">Contact</Link>
-                        </nav>
-                    </div>
+        <div className="flex flex-col space-y-2 col-span-1">
+          <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-200">Connect With Us</h3>
+          <div className="flex space-x-4 text-lg">
+            <a href="https://www.facebook.com" target="_blank" className="text-blue-600"><FaFacebookF /></a>
+            <a href="https://twitter.com" target="_blank" className="text-blue-400"><FaXTwitter /></a>
+            <a href="https://www.linkedin.com" target="_blank" className="text-blue-700"><FaLinkedinIn /></a>
+            <a href="https://www.instagram.com" target="_blank" className="text-pink-500"><FaInstagram /></a>
+          </div>
+        </div>
+      </div>
 
-                    <div className='col-span-2 md:col-span-1'>
-                        <h4 className="text-[1.13rem] font-bold mb-2 text-gradient">Follow Our Journey</h4>
-                        <div className="flex space-x-4 pt-4 items-center justify-start">
-                            <Link to="https://www.instagram.com" target="_blank"  className="transition duration-300 transform hover:scale-110"> <FaInstagram  className="w-8 h-8 text-pink-600 hover:text-pink-400" /> </Link>
-                            <Link to="https://www.facebook.com"  target="_blank"  className="transition duration-300 transform hover:scale-110"> <FaFacebookF  className="w-7 h-7 text-blue-600 hover:text-blue-400" /></Link>
-                            <Link to="https://www.pinterest.com" target="_blank"  className="transition duration-300 transform hover:scale-110"> <FaPinterestP className="w-7 h-7 text-red-600 hover:text-red-400" /></Link>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div className=" p-4">
-                <p className="text-center text-white text-[0.85rem] mt-3 mb-4 md:mt-0 md:mb-0 "> &copy; 2025 TravelEase. All rights reserved.</p>
-            </div>
-        </footer>
-    );
+      <div className="pb-10 border-t pt-6 border-gray-50 dark:border-gray-500"><p className="text-center text-sm pb-10 md:pb-0"> &copy; 2025 TravelEase. All rights reserved. </p></div>
+    </footer>
+  );
 };
 
 export default Footer;

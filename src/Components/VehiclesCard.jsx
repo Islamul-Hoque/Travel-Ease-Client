@@ -10,23 +10,23 @@ const VehiclesCard = ({ vehicle }) => {
     const formattedDate = format(new Date(createdAt), "dd/MM/yyyy");
 
     return (
-        <div className="card rounded-xl overflow-hidden shadow  hover:shadow-md transition duration-300 transform hover:scale-[1.02] group">
+        <div className="card rounded-xl overflow-hidden shadow hover:shadow-lg dark:hover:shadow-[0_0_10px_rgba(255,255,255,0.05)] transition duration-300 transform hover:scale-[1.02] group bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
             <div className="h-[15.2rem] md:h-[13.2rem] overflow-hidden"> <img src={coverImage} className="w-full h-full object-cover transition duration-500 hover:scale-105" alt={vehicleName} /> </div>
 
             <div className="card-body p-6 flex flex-col justify-between">
                 <div className="space-y-4">
                     <div className='flex justify-between items-start'>
-                        <h2 className="card-title text-2xl font-extrabold leading-snug"> {vehicleName} </h2>
+                        <h2 className="card-title text-2xl font-extrabold leading-snug text-gray-800 dark:text-gray-100"> {vehicleName} </h2>
                         <div className='flex items-center gap-1 text-primary font-bold text-lg'> <FaStar className='text-yellow-500 text-base' /> {Number(rating).toFixed(1)} </div>
                     </div>
 
-                    <div className="flex gap-4 text-sm">
+                    <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400">
                         <div className="flex items-center gap-1"> <FaTags className="text-primary text-sm" /> {category} </div>
                         <div className="flex items-center gap-1">  <HiOutlineLocationMarker className="text-primary text-sm" /> {location.split(',')[0]}</div>
                         <div className="flex items-center gap-1">  <FaChair className="text-primary text-sm" /> {seatingCapacity} Seats  </div>
                     </div>
 
-                    <div className="flex items-center justify-between ">
+                    <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
                         <p className="flex items-center gap-1 font-extrabold text-2xl text-primary">  <FaDollarSign className='text-xl' /> {pricePerDay} <span className=''>/ Day</span> </p>
                         <div className="flex items-center gap-1 text-xs "> <MdOutlineDateRange className=" text-sm" /> {formattedDate} </div>
                     </div>

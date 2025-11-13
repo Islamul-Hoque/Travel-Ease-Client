@@ -15,8 +15,7 @@ const MyBookings = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosInstance
-        .get(`/my-bookings?email=${user.email}`)
+        axiosInstance.get(`/my-bookings?email=${user.email}`)
         .then((data) => {
           setBooking(data.data);
         })
@@ -39,25 +38,26 @@ const MyBookings = () => {
       <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center py-12"> My <span className="text-gradient">Bookings</span> </h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
-        {booking.map((vehicle) => (
-          <div key={vehicle._id} className="card rounded-xl overflow-hidden shadow-md hover:shadow-md transition duration-300 transform hover:scale-[1.02] group">
+        { 
+          booking.map((vehicle) => (
+            <div key={vehicle._id} className="card rounded-xl overflow-hidden shadow hover:shadow-lg dark:hover:shadow-[0_0_10px_rgba(255,255,255,0.05)] transition duration-300 transform hover:scale-[1.02] group bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
 
             <div className="h-[15.2rem] md:h-[13.2rem] overflow-hidden"> <img src={vehicle.coverImage} alt={vehicle.vehicleName} className="w-full h-full object-cover transition duration-500 hover:scale-105" /> </div>
 
             <div className="card-body p-6 flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
-                  <h2 className="card-title text-2xl font-extrabold leading-snug">{vehicle.vehicleName}</h2>
+                  <h2 className="card-title text-2xl font-extrabold leading-snug text-gray-800 dark:text-gray-100">{vehicle.vehicleName}</h2>
                   <div className="flex items-center gap-1 text-primary font-bold text-lg"> <FaStar className="text-yellow-500 text-base" /> {Number(vehicle.rating).toFixed(1)} </div>
                 </div>
 
-                <div className="flex gap-4 text-sm">
+                <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400">
                   <div className="flex items-center gap-1"><FaTags className="text-primary text-sm" /> {vehicle.category}</div>
                   <div className="flex items-center gap-1"><HiOutlineLocationMarker className="text-primary text-sm" /> {vehicle.location.split(",")[0]}</div>
                   <div className="flex items-center gap-1"><FaChair className="text-primary text-sm" /> {vehicle.seatingCapacity} Seats</div>
                 </div>
 
-                <div className="flex items-center justify-between pt-4">
+                <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400 my-2">
                   <p className="flex items-center gap-1 font-extrabold text-2xl text-primary"> <FaDollarSign className="text-xl" /> {vehicle.pricePerDay} <span>/ Day</span> </p>
                   <div className="flex items-center gap-1 text-xs"> <MdOutlineDateRange className="text-sm" /> {format(new Date(vehicle.createdAt), "dd/MM/yyyy")} </div>
                 </div>

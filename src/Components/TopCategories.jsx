@@ -34,11 +34,11 @@ const topCategories = [
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12">
             { 
                 topCategories.map( category => (
-                <div key={category.id} className="rounded-xl overflow-hidden shadow-md  hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                <div key={category.id} className="card rounded-xl overflow-hidden shadow hover:shadow-lg dark:hover:shadow-[0_0_10px_rgba(255,255,255,0.05)] transition duration-300 transform hover:scale-[1.02] group bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                     <div className="h-[15.2rem] md:h-[13.2rem]"> <img src={category.imageUrl} className="w-full h-full object-cover transition duration-500 hover:scale-105" alt={category.name} /> </div>
                     <div className="p-6 text-center">
-                        <h3 className="text-[1.3rem] font-bold text-center mb-3">{category.name}</h3>
-                        <p className="text-[0.9rem]">{category.description}</p>
+                        <h3 className="text-[1.3rem] font-bold text-center mb-3 text-gray-800 dark:text-gray-100">{category.name}</h3>
+                        <p className="text-[0.9rem] text-gray-600 dark:text-gray-400">{category.description}</p>
                     </div>
                 </div>))
             }
