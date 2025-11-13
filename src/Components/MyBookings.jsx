@@ -20,7 +20,7 @@ const MyBookings = () => {
           setBooking(data.data);
         })
     }
-  }, [user, axiosInstance]);
+  }, [user?.email, axiosInstance]);
 
   if (loading) return <Spinner />;
 

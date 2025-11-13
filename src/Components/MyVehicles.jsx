@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaEye, FaEdit, FaTrash, FaDollarSign, FaChair, FaMapMarkerAlt, FaCar, FaStar, FaTags } from "react-icons/fa";
+import { FaEye, FaEdit, FaTrash, FaDollarSign, FaChair, FaStar, FaTags } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { Link } from "react-router";

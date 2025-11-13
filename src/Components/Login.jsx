@@ -62,18 +62,18 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen  ">
-            <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem] overflow-hidden shadow">
+        <div className="flex justify-center items-center min-h-screen ">
+            <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem] overflow-hidden shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-bold text-center pt-6"> Login to <span className="text-gradient">TravelEase</span></h2>
-                <div className="card-body">
+                <div className="card-body text-gray-800 dark:text-gray-100">
                     <form onSubmit={ handleLogin }>
                         <fieldset className="fieldset">
-                            <label className="label">Email address</label>
-                            <input name="email"  type="email" className="input w-full" placeholder="Enter your email address"  />
+                            <label className="label text-gray-700 dark:text-gray-300 ">Email address</label>
+                            <input name="email"  type="email" className="input bg-gray-50 dark:bg-gray-700 w-full" placeholder="Enter your email address"  />
 
                             <div className="relative">
-                                <label className="label mb-[0.38rem] mt-2">Password</label>
-                                <input name="password" type={ show ? "text" : "password" } className="input w-full" placeholder="Enter your password" />
+                                <label className="label mb-[0.38rem] mt-2 text-gray-700 dark:text-gray-300">Password</label>
+                                <input name="password" type={ show ? "text" : "password" } className="input bg-gray-50 dark:bg-gray-700 w-full" placeholder="Enter your password" />
                                 <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[2.77rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
                             </div>
 
@@ -84,11 +84,11 @@ const Login = () => {
                             <button type="submit" className="btn-primary-w-full mt-4">Login</button>
                         </fieldset>
                     </form>
-                    <p className="text-gray-500 text-center"> Don’t have an account?{" "} <Link to="/register" className="text-gradient font-medium"> Sign Up </Link></p>
+                    <p className="text-gray-500 dark:text-gray-400 text-center"> Don’t have an account?{" "} <Link to="/register" className="text-gradient font-medium"> Sign Up </Link></p>
 
                     <div className="flex items-center gap-3 ">
                         <hr className="flex-1 border-gray-200" />
-                        <span className="text-gray-400 text-sm">or</span>
+                        <span className="text-gray-500 dark:text-gray-400 text-sm">or</span>
                         <hr className="flex-1 border-gray-200" />
                     </div>
 
