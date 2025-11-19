@@ -155,9 +155,8 @@ Ensure all environment variables are configured correctly.
 ---
 
 ## 🎯 Advanced Features
-- Category & price-based sorting (All Vehicles page)  
-- Booking count (optional)  
-- Top-rated / most-booked vehicles section  
+- price-based sorting (All Vehicles page)   
+- Top-Categories vehicles section  
 - Custom loading spinner  
 - Custom 404 page  
 
@@ -165,3 +164,16 @@ Ensure all environment variables are configured correctly.
 
 ## 📄 License
 This project is for educational & portfolio use only.
+
+## 👤 Author
+
+**Islamul Hoque**  
+*MERN Stack Web Developer*  
+
+📍 **Chattogram, Bangladesh**  
+📧 **islamulhoque2006@gmail.com**  
+
+🔗 **Social Links:**  
+- [LinkedIn](https://linkedin.com/Islamul-Hoque)  
+- [Facebook](https://facebook.com/ISLAMUL.HOQUE.ISHFAK.OFFICIAL)  
+- [Twitter](https://twitter.com/ISHFAK2003)
