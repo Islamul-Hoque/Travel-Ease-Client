@@ -16,8 +16,7 @@ The platform is built using MongoDB, Express, React, Node.js, with Firebase Auth
 ---
 
 ## 📸 Screenshot
-![TravelEase Screenshot](./project-view.png)
-
+![TravelEase Screenshot](https://i.ibb.co.com/nsCN6MjY/project-view.png)
 ---
 
 ## ✨ Key Features
