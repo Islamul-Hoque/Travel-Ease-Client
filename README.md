@@ -149,15 +149,7 @@ Ensure all environment variables are configured correctly.
 - /myVehicles  
 - /myBookings  
 - /updateVehicle/:id  
-- /vehicle/:id  
-
----
-
-## 🎯 Advanced Features
-- price-based sorting (All Vehicles page)   
-- Top-Categories vehicles section  
-- Custom loading spinner  
-- Custom 404 page  
+- /vehicle/:id   
 
 ---
 
