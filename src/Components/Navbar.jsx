@@ -30,6 +30,7 @@ export default function Navbar() {
     <>
         <li><NavLink end to="/" className={activeClass}>Home</NavLink></li>
         <li><NavLink end to="/all-vehicles" className={activeClass}>All Vehicles</NavLink></li>
+        <li><NavLink end to="/about" className={activeClass}>About</NavLink></li> 
 
         {user && (
             <>
