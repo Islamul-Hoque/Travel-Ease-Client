@@ -164,7 +164,7 @@ const AllVehicles = () => {
           </select> */}
         </div>
 
-        {/* {showFilters && (
+        {showFilters && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
             
             <div className="form-control">
@@ -191,7 +191,7 @@ const AllVehicles = () => {
               </select>
             </div>
           </div>
-        )} */}
+        )}
       </div>
 
       {/* Vehicles Grid */}
