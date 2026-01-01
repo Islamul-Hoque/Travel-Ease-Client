@@ -5,8 +5,8 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 px-6 md:px-10">
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-10 py-10">
+    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 ">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-10 py-10 px-6 md:px-10 max-w-7xl mx-auto">
         <div className="flex flex-col space-y-2 col-span-2">
           <Link> <span className="text-[2.25rem] font-extrabold tracking-wider text-gray-900 dark:text-gray-200">Travel<span className="text-gradient">Ease</span> </span></Link>
           <p className="text-sm"> Your ultimate hub for seamless vehicle rentals and trip planning. Discover, book, and manage your rides effortlessly, all in one place. </p>

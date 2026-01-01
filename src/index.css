@@ -30,3 +30,6 @@
 .btn-secondary-w-full { 
     @apply btn  w-full shadow-none border-[1.5px] border-purple-600 text-transparent bg-clip-text bg-[linear-gradient(125.07deg,#632EE3,#9F62F2_100%)] hover:text-white hover:bg-[linear-gradient(125.07deg,#632EE3,#9F62F2_100%)] hover:bg-clip-border transition-all duration-300;
 }
+
+/* * { border: 1px solid red; } 
+body { border: 2px dashed blue; } */

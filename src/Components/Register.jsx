@@ -82,7 +82,7 @@ const Signup = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen pt-12 pb-16 ">
-            <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem]  overflow-hidden shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+            <div className="w-[88vw] md:w-[40vw] pb-3 rounded-[0.7rem]  overflow-hidden shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-bold text-center pt-6"> Sign Up for <span className="text-gradient">TravelEase</span></h2>   
                 <div className="card-body text-gray-800 dark:text-gray-100">
                     <form onSubmit={ handleRegister }>

@@ -31,6 +31,7 @@ export default function Navbar() {
         <li><NavLink end to="/" className={activeClass}>Home</NavLink></li>
         <li><NavLink end to="/all-vehicles" className={activeClass}>All Vehicles</NavLink></li>
         <li><NavLink end to="/about" className={activeClass}>About</NavLink></li> 
+        <li><NavLink end to="/contact" className={activeClass}>Contact</NavLink></li> 
 
         {user && (
             <>
@@ -43,8 +44,8 @@ export default function Navbar() {
     );
 
     return (
-        <div className="navbar bg-gray-100 dark:bg-gray-900 px-6 md:px-8 shadow-md sticky top-0 z-40">
-
+        <div className="bg-gray-100 dark:bg-gray-900 ">
+        <div className="navbar max-w-7xl mx-auto px-6 md:px-10  sticky top-0 z-40">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost md:hidden"> <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg> </div>
@@ -87,6 +88,7 @@ export default function Navbar() {
                     </div>
                 )}
             </div>
+        </div>
         </div>
     );
 }

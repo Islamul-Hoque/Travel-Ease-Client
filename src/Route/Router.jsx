@@ -14,6 +14,7 @@ import UpdateVehicle from "../Components/UpdateVehicle";
 import HomeLayout from "../Layout/HomeLayout";
 import ErrorPage from "../Pages/ErrorPage";
 import About from "../Components/About";
+import Contact from "../Components/Contact";
 
 const router = createBrowserRouter([
 {
@@ -30,13 +31,18 @@ const router = createBrowserRouter([
         },
         {
             path: "/vehicle-details/:id",
-            loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
+            // loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
+            loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
             Component: VehiclesDetails
             // element: <PrivateRouter> <VehiclesDetails/> </PrivateRouter>
         },
         {
             path: 'about',
             Component: About
+        },
+        {
+            path: 'contact',
+            Component: Contact
         },
         {
             path: "my-vehicles",
@@ -52,7 +58,8 @@ const router = createBrowserRouter([
         },
         {
             path: "update-vehicle/:id",
-            loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
+            // loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
+            loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
             element: <PrivateRouter> <UpdateVehicle/> </PrivateRouter>
         },
         {
