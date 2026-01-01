@@ -152,7 +152,7 @@ const AllVehicles = () => {
           </button>
 
           
-          {/* <select
+          <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
             className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50"
@@ -161,7 +161,7 @@ const AllVehicles = () => {
             <option value="price-asc">Price: Low to High</option>
             <option value="date-desc">Date: Newest First</option>
             <option value="date-asc">Date: Oldest First</option>
-          </select> */}
+          </select>
         </div>
 
         {showFilters && (
