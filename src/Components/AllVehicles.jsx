@@ -213,8 +213,8 @@ const AllVehicles = () => {
 
 
 
-      {/* Pagination */}
-    {/* <div className="flex justify-center mt-8">
+
+    <div className="flex justify-center mt-8">
         <div className="join gap-2">
           {page > 1 && (
             <button
@@ -246,7 +246,7 @@ const AllVehicles = () => {
             </button>
           )}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
