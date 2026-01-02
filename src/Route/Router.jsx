@@ -16,6 +16,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import About from "../Components/About";
 import Contact from "../Components/Contact";
 import DashboardLayout from "../Layout/Dashboard/DashboardLayout";
+import EditProfile from "../Components/EditProfile";
 
 const router = createBrowserRouter([
 {
@@ -102,6 +103,11 @@ const router = createBrowserRouter([
             path: "add-vehicle",
             element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
         },
+        {
+            path: "profile",
+            element: <PrivateRouter> <EditProfile/> </PrivateRouter>
+
+        }
     ]
 }
 ]);

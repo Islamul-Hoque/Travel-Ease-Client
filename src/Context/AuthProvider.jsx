@@ -31,20 +31,50 @@ const AuthProvider = ( {children} ) => {
         return signInWithPopup( auth, googleProvider )
     }
 
-    const updateUser = (updateData) => {
-        return updateProfile(auth.currentUser, updateData)
-    }
+    // const updateUser = (updateData) => {
+    //     return updateProfile(auth.currentUser, updateData)
+    // }
+
+// const updateUser = async (updateData) => {
+//   if (!auth.currentUser) throw new Error("No authenticated user found");
+
+//   // 1. Firebase profile update
+//   await updateProfile(auth.currentUser, updateData);
+
+//   // 2. Force reload to get fresh data
+//   await auth.currentUser.reload();
+
+//   // 3. Update React state with latest user object
+//   setUser(auth.currentUser);
+
+//   return auth.currentUser;
+// };
+
+const updateUser = async (updateData) => {
+  if (!auth.currentUser) throw new Error("No authenticated user found");
+
+  await updateProfile(auth.currentUser, updateData);
+  await auth.currentUser.reload();   // force refresh
+  setUser(auth.currentUser);         // update React state immediately
+
+  return auth.currentUser;
+};
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if(currentUser) {
-                const email = currentUser.email || currentUser.providerData?.[0]?.email;
-                setUser({ ...currentUser, email });
-                setLoading(false);
-            } 
-            else {
-                setUser(null);
-            }
+            // if(currentUser) {
+            //     const email = currentUser.email || currentUser.providerData?.[0]?.email;
+            //     setUser({ ...currentUser, email });
+            //     setLoading(false);
+            // } 
+            if (currentUser) {
+  currentUser.email = currentUser.email || currentUser.providerData?.[0]?.email;
+  currentUser.photoURL = currentUser.photoURL || currentUser.providerData?.[0]?.photoURL;
+  setUser(currentUser); // ✅ keep original Firebase user object
+} else {
+  setUser(null);
+}
+
             setLoading(false);
         });
     return () => unsubscribe();

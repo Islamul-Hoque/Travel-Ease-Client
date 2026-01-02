@@ -1,8 +1,8 @@
 import React from "react";
 import useAuth from "../Hooks/useAuth";
-import { toast } from "react-toastify";
 import useAxios from "../Hooks/useAxios.jsx";
 import Spinner from "./Spinner.jsx";
+import toast from "react-hot-toast";
 
 const categories = ["Sedan", "SUV", "Electric", "Van"];
 

@@ -88,7 +88,7 @@ const DashboardLayout = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/edit-profile" className={activeClass}>
+            <NavLink to="/dashboard/profile" className={activeClass}>
               <MdEdit /> Edit Profile
             </NavLink>
           </li>
@@ -194,8 +194,8 @@ const DashboardLayout = () => {
                   <div className="w-10 rounded-full">
                     <img
                       src={
-                        user?.photoURL ||
-                        "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"
+                         user?.photoURL || user?.providerData?.[0]?.photoURL ||
+                        "https://i.ibb.co.com/RTyj1cSs/1559144-200.png" 
                       }
                       alt=""
                     />
@@ -206,11 +206,11 @@ const DashboardLayout = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
                 >
                   <li>
-                    <a>{user?.displayName || "User"}</a>
+                    <a>{user?.displayName || user?.providerData?.[0]?.displayName || ""}</a>
                   </li>
                   <li>
                     <Link
-                      to="/dashboard/edit-profile"
+                      to="/dashboard/profile"
                       className="hover:bg-indigo-50"
                     >
                       Edit Profile

@@ -305,7 +305,7 @@ const MyVehicles = () => {
                 <FaEye /> Details
               </Link>
               <Link
-                to={`/update-vehicle/${vehicle._id}`}
+                to={`/dashboard/update-vehicle/${vehicle._id}`}
                 className="btn btn-sm btn-warning text-white flex items-center gap-1 "
               >
                 <FaEdit /> Update

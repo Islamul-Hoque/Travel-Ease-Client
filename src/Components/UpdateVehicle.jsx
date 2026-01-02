@@ -32,7 +32,7 @@ const UpdateVehicle = () => {
       .then((data) => {
         if (data.data.modifiedCount) {
           toast.success(`"${updatedVehicle.vehicleName}" updated successfully! 🎉`)
-          navigate("/my-vehicles")
+          navigate("/dashboard/my-vehicles")
         }
       })
       .catch((err) => {
