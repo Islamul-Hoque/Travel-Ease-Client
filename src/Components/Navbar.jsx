@@ -34,10 +34,11 @@ export default function Navbar() {
         <li><NavLink end to="/contact" className={activeClass}>Contact</NavLink></li> 
 
         {user && (
-            <>
-                <li><NavLink end to="/my-vehicles" className={activeClass}>My Vehicles</NavLink></li>
+            <>  
+                <li><NavLink end to="/dashboard" className={activeClass}>Dashboard</NavLink></li>
+                {/* <li><NavLink end to="/my-vehicles" className={activeClass}>My Vehicles</NavLink></li>
                 <li><NavLink end to="/my-bookings" className={activeClass}>My Bookings</NavLink></li>
-                <li><NavLink end to="/add-vehicle" className={activeClass}>Add Vehicle</NavLink></li>
+                <li><NavLink end to="/add-vehicle" className={activeClass}>Add Vehicle</NavLink></li> */}
             </>
         )}
     </>

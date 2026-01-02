@@ -15,7 +15,7 @@ const MyBookings = () => {
 
   useEffect(() => {
     if (user?.email) {
-        axiosInstance.get(`/my-bookings?email=${user.email}`)
+        axiosInstance.get(`/my-bookings?email=${user.email }`)
         .then((data) => {
           setBooking(data.data);
         })
@@ -47,7 +47,7 @@ const MyBookings = () => {
             <div className="card-body p-6 flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
-                  <h2 className="card-title text-2xl font-extrabold leading-snug text-gray-800 dark:text-gray-100">{vehicle.vehicleName}</h2>
+                  <h2 className="card-title font-bold leading-snug text-gray-800 dark:text-gray-100">{vehicle.vehicleName}</h2>
                   <div className="flex items-center gap-1 text-primary font-bold text-lg"> <FaStar className="text-yellow-500 text-base" /> {Number(vehicle.rating).toFixed(1)} </div>
                 </div>
 
@@ -58,7 +58,7 @@ const MyBookings = () => {
                 </div>
 
                 <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400 my-2">
-                  <p className="flex items-center gap-1 font-extrabold text-2xl text-primary"> <FaDollarSign className="text-xl" /> {vehicle.pricePerDay} <span>/ Day</span> </p>
+                  <p className="flex items-center gap-1 font-bold text-xl text-primary"> <FaDollarSign className="" /> {vehicle.pricePerDay} <span>/ Day</span> </p>
                   <div className="flex items-center gap-1 text-xs"> <MdOutlineDateRange className="text-sm" /> {format(new Date(vehicle.createdAt), "MM/dd/yyyy")} </div>
                 </div>
               </div>

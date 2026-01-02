@@ -15,6 +15,7 @@ import HomeLayout from "../Layout/HomeLayout";
 import ErrorPage from "../Pages/ErrorPage";
 import About from "../Components/About";
 import Contact from "../Components/Contact";
+import DashboardLayout from "../Layout/Dashboard/DashboardLayout";
 
 const router = createBrowserRouter([
 {
@@ -44,18 +45,18 @@ const router = createBrowserRouter([
             path: 'contact',
             Component: Contact
         },
-        {
-            path: "my-vehicles",
-            element: <PrivateRouter> <MyVehicles/> </PrivateRouter>
-        },
-        {
-            path: "my-bookings",
-            element: <PrivateRouter> <MyBookings/> </PrivateRouter>
-        },
-        {
-            path: "add-vehicle",
-            element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
-        },
+        // {
+        //     path: "my-vehicles",
+        //     element: <PrivateRouter> <MyVehicles/> </PrivateRouter>
+        // },
+        // {
+        //     path: "my-bookings",
+        //     element: <PrivateRouter> <MyBookings/> </PrivateRouter>
+        // },
+        // {
+        //     path: "add-vehicle",
+        //     element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
+        // },
         {
             path: "update-vehicle/:id",
             // loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
@@ -76,6 +77,28 @@ const router = createBrowserRouter([
         }
     ],
 },
+{
+    path: 'dashboard',
+    element: <PrivateRouter> <DashboardLayout/> </PrivateRouter>,
+    children: [
+    //   {
+    //     index: true,
+    //     Component: DashboardHome
+    //   },
+      {
+            path: "my-vehicles",
+            element: <PrivateRouter> <MyVehicles/> </PrivateRouter>
+        },
+        {
+            path: "my-bookings",
+            element: <PrivateRouter> <MyBookings/> </PrivateRouter>
+        },
+        {
+            path: "add-vehicle",
+            element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
+        },
+    ]
+}
 ]);
 
 export default router;

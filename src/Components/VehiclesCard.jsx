@@ -16,7 +16,7 @@ const VehiclesCard = ({ vehicle }) => {
             <div className="card-body p-6 flex flex-col justify-between">
                 <div className="space-y-4">
                     <div className='flex justify-between items-start'>
-                        <h2 className="card-title text-xl font-bold leading-snug text-gray-800 dark:text-gray-100"> {vehicleName} </h2>
+                        <h2 className="card-title text-md font-bold leading-snug text-gray-800 dark:text-gray-100"> {vehicleName} </h2>
                         <div className='flex items-center gap-1 text-primary font-bold text-lg'> <FaStar className='text-yellow-500 text-base' /> {Number(rating).toFixed(1)} </div>
                     </div>
 
@@ -27,7 +27,7 @@ const VehiclesCard = ({ vehicle }) => {
                     </div>
 
                     <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
-                        <p className="flex items-center gap-1 font-extrabold text-2xl text-primary">  <FaDollarSign className='text-xl' /> {pricePerDay} <span className=''>/ Day</span> </p>
+                        <p className="flex items-center gap-1 font-bold text-sm text-primary"> <FaDollarSign />{pricePerDay}<span className=''>/ Day</span> </p>
                         <div className="flex items-center gap-1 text-xs "> <MdOutlineDateRange className=" text-sm" /> {formattedDate} </div>
                     </div>
                 </div>
