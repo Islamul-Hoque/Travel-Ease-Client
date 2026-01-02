@@ -17,6 +17,8 @@ import About from "../Components/About";
 import Contact from "../Components/Contact";
 import DashboardLayout from "../Layout/Dashboard/DashboardLayout";
 import EditProfile from "../Components/EditProfile";
+import DashboardHome from "../Layout/Dashboard/DashboardHome";
+import BookVehicles from "../Components/BookVehicles";
 
 const router = createBrowserRouter([
 {
@@ -82,10 +84,10 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRouter> <DashboardLayout/> </PrivateRouter>,
     children: [
-    //   {
-    //     index: true,
-    //     Component: DashboardHome
-    //   },
+      {
+        index: true,
+        Component: DashboardHome
+      },
         {
             path: "my-vehicles",
             element: <PrivateRouter> <MyVehicles/> </PrivateRouter>
@@ -98,6 +100,10 @@ const router = createBrowserRouter([
         {
             path: "my-bookings",
             element: <PrivateRouter> <MyBookings/> </PrivateRouter>
+        },
+        {
+            path: "book-vehicles",
+            element: <PrivateRouter> <BookVehicles/> </PrivateRouter>
         },
         {
             path: "add-vehicle",

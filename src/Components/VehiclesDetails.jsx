@@ -4,38 +4,12 @@ import { FaStar, FaChair, FaDollarSign, FaCheckCircle, FaUsers, FaTags } from "r
 import { HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
 import { MdOutlineDateRange } from "react-icons/md";
 import { format } from "date-fns";
-import { toast } from "react-toastify";
-import useAuth from "../Hooks/useAuth";
-import useAxios from "../Hooks/useAxios";
-import Spinner from "./Spinner";
 
 const VehicleDetails = () => {
-  const { user, loading } = useAuth()
   const data = useLoaderData()
-  const axiosInstance = useAxios()
-
-  if (loading) return <Spinner/>
 
   const { _id, vehicleName, ownerName, ownerPhoto, reviewsCount, category, pricePerDay, location, seatingCapacity, description, coverImage, createdAt, userEmail, features = [], rating = 0, totalBookings = 0, status = "active" } = data;
   const formattedDate = format(new Date(createdAt), "MM/dd/yyyy");
-
-  const handleBookNow = () => {
-    const bookingData = { vehicleId: _id, vehicleName, category, pricePerDay, location, seatingCapacity, rating, coverImage, createdAt,reviewsCount,
-      userEmail: user.email, bookingDate: format(new Date(), "MM/dd/yyyy") };
-
-    axiosInstance.post("/my-bookings", bookingData, { 
-      headers: { "Content-Type": "application/json" }})
-      .then(data => {
-        if (data.data.insertedId) {
-          toast.success(`🎉 Your booking for "${vehicleName}" is confirmed!`);
-        } else if (data.data.message) {
-          toast.error(data.data.message);
-        }
-      })
-      .catch(err => {
-        toast.error(err.response.data.message);
-      })
-  }
 
   return (
   <div className="px-6 md:px-10 mx-auto pb-10 ">
@@ -91,7 +65,6 @@ const VehicleDetails = () => {
               <div className="flex justify-between"><span><HiOutlineLocationMarker className="inline mr-1 text-primary" /> Location</span><span className="font-medium text-gray-700 dark:text-gray-300">{location}</span></div>
               <div className="flex justify-between"><span><FaCheckCircle className="inline mr-1 text-primary" /> Status</span><span className="text-green-600">{status}</span></div>
             </div>
-            <div> <button onClick={handleBookNow} className="btn btn-primary-w-full">Book Now</button></div>
           </div>
         </div>
       </div>
