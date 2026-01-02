@@ -108,6 +108,28 @@ const MyBookings = () => {
   });
 
   // ✅ Delete mutation
+const handleDelete = (id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "This booking will be permanently deleted!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axiosInstance.delete(`/my-bookings/${id}`)
+        .then(() => {
+          toast.success("Booking deleted!");
+          refetch();
+        })
+        .catch((err) => {
+          toast.error(err.response?.data?.message || "Delete failed");
+        });
+    }
+  });
+};
 
 
 
