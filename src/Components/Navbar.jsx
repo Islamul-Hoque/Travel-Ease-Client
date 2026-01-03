@@ -23,7 +23,7 @@ export default function Navbar() {
 
     const activeClass = ({ isActive }) =>
         isActive ? "font-bold pb-1 text-[#632ee3]  border-b-2 border-[#632ee3] transition-colors duration-200" : 
-        "text-gray-700 hover:text-[#632ee3] transition-colors duration-200";
+        "text-gray-800 dark:text-gray-50 hover:text-[#632ee3] transition-colors duration-200";
 
     const handleLogOut = () => {
         signOutUser()

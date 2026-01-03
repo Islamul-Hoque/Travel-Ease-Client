@@ -111,9 +111,11 @@ const DashboardLayout = () => {
   const handleLogOut = () => signOutUser().then(() => toast.success("You've been successfully logged out!")).catch((error) => toast.error(error.code));
 
 
-  const activeClass = ({ isActive }) => isActive
-    ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
-    : "text-gray-700 hover:text-indigo-500 px-3 py-1 rounded-md";
+  // const activeClass = ({ isActive }) => isActive
+  //   ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
+  //   : "text-gray-700 hover:text-indigo-500 px-3 py-1 rounded-md";
+  const activeClass = ({ isActive }) => isActive ? 
+  "font-bold text-[#632ee3] flex items-center gap-2" : "  text-gray-800 dark:text-gray-50 hover:text-[#632ee3] flex items-center gap-2";
 
   return (
    <div className="bg-gray-50 dark:bg-gray-800  max-w-7xl mx-auto ">
@@ -157,7 +159,7 @@ const DashboardLayout = () => {
       <div className="drawer-side  shadow">
         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className="flex min-h-full flex-col bg-gray-50 dark:bg-gray-800 text-gray-800 shadow w-60">
-        <h2 className="text-xl p-4 font-bold mb- text- center"> <Link to={'/'}>Travel <span className="text-gradient">Ease</span></Link> </h2>
+        <h2 className="text-xl p-4 font-bold text-gray-800 dark:text-gray-100 "> <Link to={'/'}>Travel <span className="text-gradient">Ease</span></Link> </h2>
   
         <ul className="menu p -4 w-full grow">
           <li><NavLink end className={activeClass} to="/dashboard" ><MdDashboard /> Overview</NavLink></li>
@@ -166,13 +168,11 @@ const DashboardLayout = () => {
           <li><NavLink end className={activeClass} to="/dashboard/book-vehicles" ><FaRegCalendarCheck /> Book Vehicles</NavLink></li>
           <li><NavLink end className={activeClass} to="/dashboard/my-bookings" ><MdBookmark /> My Bookings</NavLink></li>
 
-        <div className="border-t my-6"></div>
+        <div className="border-t border-gray-300 dark:border-gray-700 my-3"></div>
 
           <li><NavLink end className={activeClass} to="/" ><MdHome /> Main Home</NavLink></li>
           <li><NavLink end className={activeClass} to="/dashboard/profile" ><MdEdit /> Edit Profile</NavLink></li>
         </ul>
-
-
 
         </div>
       </div>

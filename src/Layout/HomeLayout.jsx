@@ -4,7 +4,7 @@ import Spinner from '../Components/Spinner';
 import useAxios from '../Hooks/useAxios';
 import Banner from '../Components/Banner';
 import TopCategories from '../Components/TopCategories';
-import AboutTravelEase from '../Components/AboutTravelEase';
+import Testimonials from '../Components/Testimonials';
 
 const HomeLayout = () => {
     const [vehicles, setVehicles] = useState([]);
@@ -28,16 +28,17 @@ const HomeLayout = () => {
     return (
         <div>
             <section><Banner/></section>
-            <section className='px-6 md:px-10'>
+            <Testimonials/>
+            {/* <section className='px-6 md:px-10'>
                 <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center my-12"> Newly Added <span className='text-gradient'>Vehicles</span></h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
                     { vehicles.map(vehicle => 
                         <VehiclesCard key={vehicle._id} vehicle={vehicle}/> )
                     }
                 </div>
-            </section>
-            <section><TopCategories/> </section>
-            <section><AboutTravelEase/> </section>
+            </section> */}
+            {/* <section><TopCategories/> </section> */}
         </div>
     );
 };

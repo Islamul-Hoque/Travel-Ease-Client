@@ -1,6 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import AboutTravelEase from "./AboutTravelEase";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -75,6 +76,11 @@ const About = () => {
           ))}
         </motion.div>
       </div>
+
+
+            <section><AboutTravelEase/> </section>
+
+
     </div>
   );
 };
