@@ -8,6 +8,7 @@ import Testimonials from '../Components/HomeComponents/Testimonials';
 import Faq from '../Components/HomeComponents/Faq';
 import WhyChooseUs from '../Components/HomeComponents/WhyChooseUs';
 import HowItWorks from '../Components/HomeComponents/HowItWorks';
+import Newsletter from '../Components/HomeComponents/Newsletter';
 
 const HomeLayout = () => {
     const [vehicles, setVehicles] = useState([]);
@@ -41,8 +42,9 @@ const HomeLayout = () => {
                     }
                 </div>
             </section>
-            {/* <section><TopCategories/> </section>
-            <section><WhyChooseUs/></section> */}
+            <section><TopCategories/> </section>
+            <section><Newsletter/> </section>
+            <section><WhyChooseUs/></section>
             <section> <HowItWorks/></section>
             {/* <section><Faq/></section> */}
             {/* <section> <Testimonials/></section> */}
