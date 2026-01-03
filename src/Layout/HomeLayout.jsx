@@ -10,6 +10,7 @@ import WhyChooseUs from '../Components/HomeComponents/WhyChooseUs';
 import HowItWorks from '../Components/HomeComponents/HowItWorks';
 import Newsletter from '../Components/HomeComponents/Newsletter';
 import AppDownload from '../Components/HomeComponents/AppDownload';
+import SafetyComfort from '../Components/HomeComponents/SafetyComfort';
 
 const HomeLayout = () => {
     const [vehicles, setVehicles] = useState([]);
@@ -43,11 +44,16 @@ const HomeLayout = () => {
                     }
                 </div>
             </section>
-            {/* <section><TopCategories/> </section>
+            <section><TopCategories/> </section>
+
             <section><WhyChooseUs/></section>
             <section> <HowItWorks/></section>
-            <section><Faq/></section> */}
+
+            <section><Faq/></section>
             {/* <section> <Testimonials/></section> */}
+            <section> <SafetyComfort/></section>
+
+
             <section><AppDownload/> </section>
             <section><Newsletter/> </section>
 
