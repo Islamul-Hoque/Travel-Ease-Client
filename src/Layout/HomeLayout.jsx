@@ -4,7 +4,8 @@ import Spinner from '../Components/Spinner';
 import useAxios from '../Hooks/useAxios';
 import Banner from '../Components/Banner';
 import TopCategories from '../Components/TopCategories';
-import Testimonials from '../Components/Testimonials';
+import Testimonials from '../Components/HomeComponents/Testimonials';
+import Faq from '../Components/HomeComponents/Faq';
 
 const HomeLayout = () => {
     const [vehicles, setVehicles] = useState([]);
@@ -26,10 +27,10 @@ const HomeLayout = () => {
     if (loading) return <Spinner/>
 
     return (
-        <div>
+        <div className='max-w-7xl mx-auto'>
             <section><Banner/></section>
-            <Testimonials/>
-            {/* <section className='px-6 md:px-10'>
+
+            <section className='px-6 md:px-10'>
                 <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center my-12"> Newly Added <span className='text-gradient'>Vehicles</span></h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     
@@ -37,8 +38,11 @@ const HomeLayout = () => {
                         <VehiclesCard key={vehicle._id} vehicle={vehicle}/> )
                     }
                 </div>
-            </section> */}
-            {/* <section><TopCategories/> </section> */}
+            </section>
+            <section><TopCategories/> </section>
+            <section> <Testimonials/></section>
+            <section><Faq/></section>
+            {/* <section><Faq/></section> */}
         </div>
     );
 };

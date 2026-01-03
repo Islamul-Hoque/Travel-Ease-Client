@@ -11,7 +11,7 @@ const testimonials = [
     name: "Ayesha Rahman",
     location: "Dhaka, Bangladesh",
     review: "Booking was super easy and the car was in perfect condition. Highly recommend!",
-    image: "https://randomuser.me/api/portraits/women/5.jpg",
+    image: "https://i.ibb.co.com/s9N0JRx9/img231.jpg",
   },
   {
     name: "Tanvir Ahmed",
@@ -45,15 +45,11 @@ const testimonials = [
   },
 ];
 
-
 const Testimonials = () => {
   return (
-    <section className="mb-16 text-gray-800">
+    <section className="mb-16 text-gray-800  px-6 md:px-10">
       <div className="mx-auto text-center my-14">
-       <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
-  What Our <span className="text-gradient">Customers Say</span>
-</h2>
-
+       <h2 className="text-2xl md:text-4xl font-bold text-center mb-8"> What Our <span className="text-gradient">Customers Say</span></h2>
       </div>
 
       <Swiper loop={true} effect={"coverflow"} grabCursor={true} centeredSlides={true} slidesPerView={3}
