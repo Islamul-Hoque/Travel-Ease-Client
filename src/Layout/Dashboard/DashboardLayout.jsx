@@ -159,7 +159,7 @@ const DashboardLayout = () => {
       <div className="drawer-side  shadow">
         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className="flex min-h-full flex-col bg-gray-50 dark:bg-gray-800 text-gray-800 shadow w-60">
-        <h2 className="text-xl p-4 font-bold text-gray-800 dark:text-gray-100 "> <Link to={'/'}>Travel <span className="text-gradient">Ease</span></Link> </h2>
+        <h2 className="text-xl cursor-pointer p-4 font-bold text-gray-800 dark:text-gray-100 "> <Link to={'/'}>Travel <span className="text-gradient">Ease</span></Link> </h2>
   
         <ul className="menu p -4 w-full grow">
           <li><NavLink end className={activeClass} to="/dashboard" ><MdDashboard /> Overview</NavLink></li>
