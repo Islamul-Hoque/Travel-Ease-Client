@@ -1,7 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link, NavLink } from "react-router"
 import { AuthContext } from "../Context/AuthProvider";
-import { toast } from "react-toastify"
+import toast from "react-hot-toast";
+import { HiOutlineHome, HiOutlineInformationCircle, HiOutlineMail } from "react-icons/hi";
+import { IoCarOutline } from "react-icons/io5";
+import { LuLayoutDashboard } from "react-icons/lu";
+
+
 export default function Navbar() {
     const { user, signOutUser } = useContext(AuthContext)
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -28,19 +33,12 @@ export default function Navbar() {
 
     const navLinks = (
     <>
-        <li><NavLink end to="/" className={activeClass}>Home</NavLink></li>
-        <li><NavLink end to="/all-vehicles" className={activeClass}>All Vehicles</NavLink></li>
-        <li><NavLink end to="/about" className={activeClass}>About</NavLink></li> 
-        <li><NavLink end to="/contact" className={activeClass}>Contact</NavLink></li> 
+        <li><NavLink end to="/" className={activeClass}><HiOutlineHome/>Home</NavLink></li>
+        <li><NavLink end to="/all-vehicles" className={activeClass}><IoCarOutline/> All Vehicles</NavLink></li>
+        <li><NavLink end to="/about" className={activeClass}><HiOutlineInformationCircle /> About</NavLink></li> 
+        <li><NavLink end to="/contact" className={activeClass}><HiOutlineMail/> Contact</NavLink></li> 
 
-        {user && (
-            <>  
-                <li><NavLink end to="/dashboard" className={activeClass}>Dashboard</NavLink></li>
-                {/* <li><NavLink end to="/my-vehicles" className={activeClass}>My Vehicles</NavLink></li>
-                <li><NavLink end to="/my-bookings" className={activeClass}>My Bookings</NavLink></li>
-                <li><NavLink end to="/add-vehicle" className={activeClass}>Add Vehicle</NavLink></li> */}
-            </>
-        )}
+        {user && ( <li><NavLink end to="/dashboard" className={activeClass}><LuLayoutDashboard/>  Dashboard</NavLink></li> )}
     </>
     );
 
@@ -57,7 +55,7 @@ export default function Navbar() {
             </div>
 
             <div className="navbar-center hidden md:flex">
-                <ul className="font-semibold menu menu-horizontal px-1 gap-2"> {navLinks} </ul>
+                <ul className="font-semibold menu menu-horizontal px-1 gap-1"> {navLinks} </ul>
             </div>
 
             <div className="navbar-end gap-3">
