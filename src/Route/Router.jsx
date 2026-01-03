@@ -38,7 +38,6 @@ const router = createBrowserRouter([
             // loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
             loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
             Component: VehiclesDetails
-            // element: <PrivateRouter> <VehiclesDetails/> </PrivateRouter>
         },
         {
             path: 'about',
@@ -48,24 +47,6 @@ const router = createBrowserRouter([
             path: 'contact',
             Component: Contact
         },
-        // {
-        //     path: "my-vehicles",
-        //     element: <PrivateRouter> <MyVehicles/> </PrivateRouter>
-        // },
-        // {
-        //     path: "my-bookings",
-        //     element: <PrivateRouter> <MyBookings/> </PrivateRouter>
-        // },
-        // {
-        //     path: "add-vehicle",
-        //     element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
-        // },
-        // {
-        //     path: "update-vehicle/:id",
-        //     // loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
-        //     loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
-        //     element: <PrivateRouter> <UpdateVehicle/> </PrivateRouter>
-        // },
         {
             path: "login",
             Component: Login,
@@ -84,35 +65,35 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRouter> <DashboardLayout/> </PrivateRouter>,
     children: [
-      {
+        {
         index: true,
         Component: DashboardHome
-      },
+        },
         {
             path: "my-vehicles",
-            element: <PrivateRouter> <MyVehicles/> </PrivateRouter>
+            Component: MyVehicles
         },
         {
             path: "update-vehicle/:id",
+            // loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
             loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
-            element: <PrivateRouter> <UpdateVehicle/> </PrivateRouter>
+            Component: UpdateVehicle
         },
         {
             path: "my-bookings",
-            element: <PrivateRouter> <MyBookings/> </PrivateRouter>
+            Component: MyBookings
         },
         {
             path: "book-vehicles",
-            element: <PrivateRouter> <BookVehicles/> </PrivateRouter>
+            Component: BookVehicles
         },
         {
             path: "add-vehicle",
-            element: <PrivateRouter> <AddVehicle/> </PrivateRouter>
+            Component: AddVehicle
         },
         {
             path: "profile",
-            element: <PrivateRouter> <EditProfile/> </PrivateRouter>
-
+            Component: EditProfile
         }
     ]
 }

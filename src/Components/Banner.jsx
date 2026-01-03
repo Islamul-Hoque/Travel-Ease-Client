@@ -65,7 +65,8 @@ const Banner = () => {
     const { slogan, subtitle, image } = slides[current];
 
     return (
-        <div className="w-full h-[60vh] md:h-[87vh] bg-cover bg-center relative flex items-center justify-center transition-all duration-1000 ease-in-out" style={{ backgroundImage: `url(${image})` }}>
+        <div className=" px-6 md:px-10">
+            <div className="w-full h-[50vh] md:h-[65vh]  bg-cover bg-center relative flex items-center justify-center transition-all duration-1000 ease-in-out" style={{ backgroundImage: `url(${image})` }}>
         <div className="absolute inset-0 bg-black/40 z-0" />
             <button onClick={prevSlide} className="absolute left-4 z-20 text-white p-3 rounded-full bg-black/30 hover:bg-black/50 transition duration-300 hidden md:block" > <FaChevronLeft size={20} /> </button>
             <motion.div key={current} variants={containerVariants} initial="hidden" animate="visible" className="relative z-10 text-center text-white px-4 w-[90%] mx-auto" >
@@ -80,6 +81,7 @@ const Banner = () => {
                 </motion.div>
             </motion.div>
             <button onClick={nextSlide} className="absolute right-4 z-20 text-white p-3 rounded-full bg-black/30 hover:bg-black/50 transition duration-300 hidden md:block"  > <FaChevronRight size={20} /> </button>
+        </div>
         </div>
 )}
 

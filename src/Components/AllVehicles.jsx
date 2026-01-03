@@ -122,7 +122,7 @@ const AllVehicles = () => {
       </h2>
 
       {/* Controls */}
-      <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+      <div className="bg-white rounded-xl p-6 shadow-sm mb-6 max-w-7xl mx-auto">
         <div className="flex flex-wrap gap-4 justify-center items-center">
           {/* Search */}
           <div className="relative w-full sm:w-64 md:w-80">
@@ -196,7 +196,7 @@ const AllVehicles = () => {
       </div>
 
       {/* Vehicles Grid */}
-      <div className="w-[85vw]">
+      <div className=" -[85vw] max-w-7xl mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[300px]">
           {isLoading ? (
             <div className="col-span-full flex justify-center items-center py-20">

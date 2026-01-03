@@ -84,15 +84,13 @@ import useAuth from "../Hooks/useAuth";
 import useAxios from "../Hooks/useAxios";
 import Spinner from "./Spinner";
 import Swal from "sweetalert2";
+import { FaEye, FaTrash } from "react-icons/fa";
 
 const MyBookings = () => {
   const { user, loading } = useAuth();
   const axiosInstance = useAxios();
-
-  // ✅ fallback email from providerData
   const providerEmail = user?.email || user?.providerData?.[0]?.email || null;
 
-  // ✅ Fetch bookings
   const {
     data: bookings = [],
     isLoading,
@@ -107,7 +105,6 @@ const MyBookings = () => {
     enabled: !!providerEmail,
   });
 
-  // ✅ Delete mutation
 const handleDelete = (id) => {
   Swal.fire({
     title: "Are you sure?",
@@ -131,21 +128,16 @@ const handleDelete = (id) => {
   });
 };
 
-
-
-  // ✅ auto refetch when email becomes available
   useEffect(() => {
     if (providerEmail) {
       refetch();
     }
   }, [providerEmail, refetch]);
 
-  // ✅ Loading states
   if (loading || isLoading) return <Spinner />;
   if (isError)
     return <div className="text-center text-red-500 mt-10">Failed to load bookings.</div>;
 
-  // ✅ Empty state
   if (bookings.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center ">
@@ -159,20 +151,17 @@ const handleDelete = (id) => {
     );
   }
 
-  // ✅ Table view
   return (
     <div className="px-6 md:px-10">
-      <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center py-12">
-        My <span className="text-gradient">Bookings</span>
-      </h2>
+      <h2 className="text-[2rem] md:text-[2.8rem] font-bold text-center py-12">  My <span className="text-gradient">Bookings</span> </h2>
 
       <div className="overflow-x-auto">
   <table className="table">
-    {/* head */}
     <thead>
       <tr>
         <th>SL</th>
         <th>Vehicle</th>
+        <th>Vehicle Name </th>
         <th>Category</th>
         <th>Location</th>
         <th>Price/Day</th>
@@ -184,31 +173,25 @@ const handleDelete = (id) => {
     <tbody>
       {bookings.map((vehicle, index) => (
         <tr key={vehicle._id}>
-          {/* Serial number */}
           <td>{index + 1}</td>
-
-          {/* Vehicle info with image */}
           <td>
             <div className="flex items-center gap-3">
-<div className="avatar">
-  <div className="h-12 w-12 rounded-lg overflow-hidden">
-    <img
-      src={vehicle.coverImage}
-      alt={vehicle.vehicleName}
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-
-
-              <div>
-                <div className="font-bold">{vehicle.vehicleName}</div>
-               
+              <div className="avatar">
+                <div className="h-12 w-12 rounded-lg overflow-hidden">
+                  <img  src={vehicle.coverImage}  alt={vehicle.vehicleName}   className="w-full h-full object-cover"  />
+                </div>
               </div>
+              
+
+              {/* <div>
+                <div className="font-bold">{vehicle.vehicleName}</div>
+              </div> */}
+
             </div>
           </td>
 
           {/* Other columns */}
+          <td>{vehicle.vehicleName}</td>
           <td>{vehicle.category}</td>
           <td>{vehicle.location?.split(",")[0]}</td>
 
@@ -217,22 +200,21 @@ const handleDelete = (id) => {
           <td>{format(new Date(vehicle.bookingDate), "MM/dd/yyyy")}</td>
 
           {/* Actions */}
-          <td>
-            <div className="flex gap-2">
-              <Link
-                to={`/vehicle-details/${vehicle.vehicleId}`}
-                className="btn btn-ghost btn-xs"
-              >
-                Details
-              </Link>
-              <button
-                onClick={() => handleDelete(vehicle._id)}
-                className="btn btn-error btn-xs"
-              >
-                Delete
-              </button>
-            </div>
-          </td>
+  
+
+<td>
+  <div className="flex gap-2">
+    <Link to={`/vehicle-details/${vehicle.vehicleId}`} className="btn btn-primary btn-xs flex items-center gap-1" >
+      <FaEye className="text-sm" /> Details
+    </Link>
+    <button onClick={() => handleDelete(vehicle._id)} className="btn bg-indigo-100 border-none btn-sm flex items-center gap-1" >
+      <FaTrash className="text-sm" /> Delete
+    </button>
+  </div>
+</td>
+
+
+
         </tr>
       ))}
     </tbody>
@@ -244,3 +226,4 @@ const handleDelete = (id) => {
 };
 
 export default MyBookings;
+

@@ -53,7 +53,7 @@ const EditProfile = () => {
           </div>
           <div className="flex-1">
             <p className="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-100">{liveName || user?.providerData?.[0]?.displayName || "Your display name"}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email} • Verified: {user?.emailVerified ? "Yes" : "No"}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email || user?.providerData?.[0]?.email} • Verified: {user?.emailVerified ? "Yes" : "No"}</p>
             {previewError && <p className="mt-1 text-xs text-red-500">{previewError}</p>}
           </div>
         </div>

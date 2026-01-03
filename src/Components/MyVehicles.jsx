@@ -166,51 +166,32 @@ const MyVehicles = () => {
   }, [providerEmail, refetch]);
 
   // ✅ Delete mutation
-  const deleteVehicleMutation = useMutation({
-    mutationFn: async ({ id }) => {
-      const res = await axiosInstance.delete(`/my-vehicles/${id}`);
-      return res.data;
-    },
-    onSuccess: (data, variables) => {
-      if (data.deletedCount) {
-        Swal.fire({
-          title: "Deleted!",
-          text: `"${variables.vehicleName}" has been deleted successfully! 🗑️`,
-          icon: "success",
-        });
-        refetch();
-      } else {
-        Swal.fire({
-          title: "Failed!",
-          text: "Vehicle not found or already deleted.",
-          icon: "error",
-        });
+const handleDeleteVehicle = async (id, vehicleName) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: `You are about to delete ${vehicleName}!`,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const res = await axiosInstance.patch(`/my-vehicles/${id}/delete`);
+        if (res.data.success) {
+          Swal.fire("Deleted!", `"${vehicleName}" has been deleted.`, "success");
+          refetch();
+        } else {
+          Swal.fire("Failed!", "Vehicle not found or already deleted.", "error");
+        }
+      } catch (err) {
+        Swal.fire("Error!", "Failed to delete vehicle.", "error");
       }
-    },
-    onError: () => {
-      Swal.fire({
-        title: "Error!",
-        text: "Failed to delete vehicle.",
-        icon: "error",
-      });
-    },
+    }
   });
+};
 
-  const handleDeleteVehicle = (id, vehicleName) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: `You are about to delete ${vehicleName}!`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteVehicleMutation.mutate({ id, vehicleName });
-      }
-    });
-  };
 
   // ✅ Loading states
   if (loading || isLoading) return <Spinner />;
