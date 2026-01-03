@@ -73,18 +73,15 @@ const Testimonials = () => {
         }}
       >
    
-{testimonials.map((t, i) => (
-          <SwiperSlide key={i}>
+          {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-  <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center h-full">
-    <img src={t.image} alt={t.name} className="w-16 h-16 rounded-full mb-4 object-cover" />
-    <h3 className="font-semibold text-lg">{t.name}</h3>
-    <p className="text-sm text-gray-500 dark:text-gray-400">{t.location}</p>
-    <p className="mt-3 text-gray-700 dark:text-gray-300">{t.review}</p>
-  </div>
-</SwiperSlide>
-
-          </SwiperSlide>
+                  <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center h-full">
+                    <img src={t.image} alt={t.name} className="w-16 h-16 rounded-full mb-4 object-cover" />
+                    <h3 className="font-semibold text-lg">{t.name}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{t.location}</p>
+                    <p className="mt-3 text-gray-700 dark:text-gray-300">{t.review}</p>
+                  </div>
+                </SwiperSlide>
         ))}
 
       </Swiper>

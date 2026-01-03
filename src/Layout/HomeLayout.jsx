@@ -6,6 +6,7 @@ import Banner from '../Components/Banner';
 import TopCategories from '../Components/TopCategories';
 import Testimonials from '../Components/HomeComponents/Testimonials';
 import Faq from '../Components/HomeComponents/Faq';
+import WhyChooseUs from '../Components/HomeComponents/WhyChooseUs';
 
 const HomeLayout = () => {
     const [vehicles, setVehicles] = useState([]);
@@ -40,9 +41,9 @@ const HomeLayout = () => {
                 </div>
             </section>
             <section><TopCategories/> </section>
-            <section> <Testimonials/></section>
+            <section><WhyChooseUs/></section>
             <section><Faq/></section>
-            {/* <section><Faq/></section> */}
+            {/* <section> <Testimonials/></section> */}
         </div>
     );
 };
