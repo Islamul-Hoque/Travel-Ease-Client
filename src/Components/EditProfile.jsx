@@ -2,7 +2,7 @@ import { GrUpdate } from "react-icons/gr";
 import { Target, Award, Upload, Edit } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { User, Mail, Camera, Save } from "lucide-react";
 
 const Profile = () => {
@@ -116,6 +116,7 @@ const Profile = () => {
       </div>
     </div>
   </div>
+  <Toaster />
 </div>
 
   );
