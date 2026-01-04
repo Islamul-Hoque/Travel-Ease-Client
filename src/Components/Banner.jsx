@@ -3,28 +3,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// const slides = [
-//     {
-//         slogan: "Your Next Adventure is Just a Click Away",
-//         subtitle:"Whether it's an inner-city commute or a long road trip, book the perfect vehicle for your needs today.",
-//         image: "https://i.ibb.co.com/23C8mc8p/1129817.jpg",
-//     },
-//     {
-//         slogan: "Effortless Travel, Zero Hassle",
-//         subtitle: "Access verified vehicles from trusted owners and manage your entire trip with our easy-to-use tools.",
-//         image: "https://i.ibb.co.com/3YsVd2mD/audi-e-tron-100768331.jpg",
-//     },
-//     {
-//         slogan: "Got a Vehicle? Start Earning Now",
-//         subtitle: "List your unused car on our platform and rent it out to reliable customers, growing your income effortlessly.",
-//         image: "https://i.ibb.co.com/35FCC8ww/black-mercedes-jpg.png",
-//     },
-//     {
-//         slogan: "Explore a World of Categories",
-//         subtitle:"From compact Sedans to rugged SUVs and eco-friendly Electric options, find the exact ride for your journey.",
-//         image: "https://i.ibb.co.com/rGLbSWWD/1243224.jpg",
-//     },
-//     ];
 const slides = [
   {
     slogan: "Adventure Starts With a Click",

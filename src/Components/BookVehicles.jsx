@@ -41,15 +41,18 @@ const BookVehicles = () => {
       const res = await axiosInstance.post("/book-vehicles/book", bookingData);
       return res.data;
     },
-    onSuccess: (data) => { if (data.insertedId) toast.success("🎉 Booking confirmed!"); else toast.error(data.message || "Booking failed"); },
-    onError: (err) => { toast.error(err.response?.data?.message || "Something went wrong"); },
+    onSuccess: (data) => { 
+      if (data.insertedId) toast.success("🎉 Booking confirmed!");
+        else toast.error(data.message || "Booking failed"); },
+        onError: (err) => {
+        toast.error(err.response?.data?.message || "Something went wrong"); },
   });
 
   if (isLoading) return <Spinner />;
 
   return (
-    <div className="px-6 md:px-10 mx-auto pb-10">
-      <h2 className="text-3xl font-bold text-center py-10"><FaCalendarCheck className="inline text-primary mr-2" /> Book Vehicles</h2>
+    <div className="px-6 md:px-10 mx-auto pb-14">
+      <h2 className="text-[1.8rem] md:text-[2.6rem] font-bold text-center py-12"> Book <span className="text-gradient">Vehicles</span> </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {vehicles.map((vehicle) => (
           <div key={vehicle._id} className="card rounded-xl overflow-hidden shadow hover:shadow-lg dark:hover:shadow-[0_0_10px_rgba(255,255,255,0.05)] transition duration-300 transform hover:scale-[1.02] group bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">

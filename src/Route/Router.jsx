@@ -35,8 +35,8 @@ const router = createBrowserRouter([
         },
         {
             path: "/vehicle-details/:id",
-            // loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
-            loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
+            loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
+            // loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
             Component: VehiclesDetails
         },
         {
@@ -75,8 +75,8 @@ const router = createBrowserRouter([
         },
         {
             path: "update-vehicle/:id",
-            // loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
-            loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
+            loader: ({params})=> fetch(`https://travel-ease-lemon.vercel.app/vehicle-details/${params.id}`),
+            // loader: ({params})=> fetch(`http://localhost:3000/vehicle-details/${params.id}`),
             Component: UpdateVehicle
         },
         {

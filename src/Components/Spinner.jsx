@@ -9,5 +9,3 @@ const Spinner = () => {
 };
 
 export default Spinner;
-
-// min-h-screen

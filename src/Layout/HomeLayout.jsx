@@ -54,7 +54,6 @@ const HomeLayout = () => {
             <section> <Testimonials/></section>
             <section><Faq/></section>
 
-
             <section><AppDownload/> </section>
             <section><Newsletter/> </section>
 

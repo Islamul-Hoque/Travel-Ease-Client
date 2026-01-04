@@ -25,8 +25,8 @@ const Footer = () => {
           <h4 className="text-[1.13rem] font-bold mb-2 text-gray-900 dark:text-gray-200">Resources</h4>
           <nav className="flex flex-col gap-1 text-gray-700 dark:text-gray-400">
             <Link to="/about" className="hover:text-primary transition-colors duration-200">About Us</Link>
-            <Link to="/privacy" className="hover:text-primary transition-colors duration-200">Privacy Policy</Link>
             <Link to="/contact" className="hover:text-primary transition-colors duration-200">Contact</Link>
+            <Link to="/login" className="hover:text-primary transition-colors duration-200">Login</Link>
           </nav>
         </div>
 

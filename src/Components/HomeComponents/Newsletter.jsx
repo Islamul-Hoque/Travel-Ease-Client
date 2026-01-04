@@ -22,7 +22,9 @@ const Newsletter = () => {
         <p className="text-gray-600 dark:text-gray-300 mb-6">Subscribe to get the latest offers and travel updates directly in your inbox.</p>
         <form onSubmit={handleSubscribe} className="flex justify-center">
           <div className="join w-full md:w-2/3">
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="input join-item w-full bg-slate-50 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email"
+              className="input join-item w-full bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+
             <button type="submit" className="btn join-item bg-primary text-white hover:bg-primary-dark rounded-r-full">Subscribe</button>
           </div>
         </form>

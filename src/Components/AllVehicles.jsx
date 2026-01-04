@@ -52,31 +52,31 @@ const AllVehicles = () => {
     <div className="px-6 md:px-10 mb-16">
   <h2 className="text-3xl md:text-4xl font-bold text-center py-12">All Available <span className="text-gradient">Vehicles ({total})</span></h2>
 
-<div className="bg-white rounded-xl p-6 shadow-sm mb-6 max-w-7xl mx-auto">
+<div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm mb-6 max-w-7xl mx-auto">
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
     
     <div className="relative">
       <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[1rem]" />
       <input type="search" value={search}
-        onChange={(e) => setSearch(e.target.value)} className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        onChange={(e) => setSearch(e.target.value)} className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg text-sm bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         placeholder="Search by name, location or category..." />
     </div>
 
-    <select  value={filterCategory}  onChange={(e) => setFilterCategory(e.target.value)} className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50">
+    <select  value={filterCategory}  onChange={(e) => setFilterCategory(e.target.value)} className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-gray-50 dark:bg-gray-700">
       <option value="">All Categories</option>
       {categories.map((cat) => (
         <option key={cat}>{cat}</option>
       ))}
     </select>
 
-    <select  value={filterLocation}  onChange={(e) => setFilterLocation(e.target.value)} className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50" >
+    <select  value={filterLocation}  onChange={(e) => setFilterLocation(e.target.value)} className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-gray-50 dark:bg-gray-700" >
       <option value="">All Locations</option>
       {locations.map((loc) => (
         <option key={loc}>{loc}</option>
       ))}
     </select>
 
-    <select value={sort}  onChange={(e) => setSort(e.target.value)}  className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50" >
+    <select value={sort}  onChange={(e) => setSort(e.target.value)}  className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-gray-50 dark:bg-gray-700" >
       <option value="price-desc">Sort by Price: High to Low</option>
       <option value="price-asc">Sort by Price: Low to High</option>
       <option value="date-desc">Sort by Date: Newest First</option>
