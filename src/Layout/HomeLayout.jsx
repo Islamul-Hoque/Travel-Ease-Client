@@ -51,7 +51,7 @@ const HomeLayout = () => {
 
             <section> <HowItWorks/></section> */}
 
-            {/* <section> <Testimonials/></section> */}
+            <section> <Testimonials/></section>
             <section><Faq/></section>
 
 
