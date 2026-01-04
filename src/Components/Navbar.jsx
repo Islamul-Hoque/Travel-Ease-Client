@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link, NavLink } from "react-router"
 import { AuthContext } from "../Context/AuthProvider";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { HiOutlineHome, HiOutlineInformationCircle, HiOutlineMail } from "react-icons/hi";
 import { IoCarOutline } from "react-icons/io5";
 import { LuLayoutDashboard } from "react-icons/lu";
@@ -88,6 +88,7 @@ export default function Navbar() {
                 )}
             </div>
         </div>
+        <Toaster />
         </div>
     );
 }

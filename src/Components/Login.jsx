@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Context/AuthProvider";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const { signInUser, googleSignIn, setUser } = useContext(AuthContext);
@@ -80,17 +80,18 @@ const Login = () => {
           <p className="text-gray-500 dark:text-gray-400 text-center mt-4">  Don’t have an account?{" "} <Link to="/register" className="text-gradient font-medium"> Sign Up</Link>
           </p>
 
-          <div className="flex items-center gap-3 mt-6">
+          <div className="flex items-center gap-3 ">
             <hr className="flex-1 border-gray-200" />
             <span className="text-gray-500 dark:text-gray-400 text-sm">or</span>
             <hr className="flex-1 border-gray-200" />
           </div>
 
-          <button onClick={handleGoogleSignIn} className="btn w-full bg-white text-black rounded-md border border-[#e5e5e5] flex items-center justify-center gap-2 mt-4" > 
+          <button onClick={handleGoogleSignIn} className="btn w-full bg-white text-black rounded-md border border-[#e5e5e5] flex items-center justify-center gap-2 " > 
             <FcGoogle size={18} />  Login with Google
           </button>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };

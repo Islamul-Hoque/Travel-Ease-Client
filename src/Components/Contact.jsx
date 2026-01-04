@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const contactInfo = [
   {
@@ -90,6 +90,7 @@ const Contact = () => {
           </motion.div>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };

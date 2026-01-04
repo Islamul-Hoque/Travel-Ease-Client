@@ -8,7 +8,8 @@ import { MdOutlineDateRange } from "react-icons/md";
 import useAuth from "../Hooks/useAuth";
 import useAxios from "../Hooks/useAxios";
 import Spinner from "./Spinner";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+
 
 const BookVehicles = () => {
   const { user } = useAuth();
@@ -81,6 +82,7 @@ const BookVehicles = () => {
           </div>
         ))}
       </div>
+      <Toaster />
     </div>
   );
 };

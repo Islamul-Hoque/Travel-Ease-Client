@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, Outlet,  } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import { toast } from "react-toastify";
+
 import { MdDashboard, MdDirectionsCar, MdBookmark, MdAddBox, MdHome, MdEdit, } from "react-icons/md";
 import {  FaRegCalendarCheck } from "react-icons/fa";
 import { MdMenu } from "react-icons/md";
+import toast, { Toaster } from "react-hot-toast";
 
 const DashboardLayout = () => {
   const { user, signOutUser } = useAuth();
@@ -17,7 +18,8 @@ const DashboardLayout = () => {
   }, [theme]);
 
   const handleTheme = (checked) => setTheme(checked ? "dark" : "light");
-  const handleLogOut = () => signOutUser().then(() => toast.success("You've been successfully logged out!")).catch((error) => toast.error(error.code));
+  const handleLogOut = () => signOutUser().then(() =>
+     toast.success("You've been successfully logged out!")).catch((error) => toast.error(error.code));
 
   const activeClass = ({ isActive }) => isActive ? 
   "font-bold text-[#632ee3] flex items-center gap-2" : "  text-gray-800 dark:text-gray-50 hover:text-[#632ee3] flex items-center gap-2";
@@ -80,6 +82,7 @@ const DashboardLayout = () => {
         </div>
       </div>
     </div>
+    <Toaster />
     </div>
   );
 };

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { FaEye} from 'react-icons/fa';
 import { IoEyeOff } from 'react-icons/io5';
-import { toast } from 'react-toastify';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../Hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Signup = () => {
     const { createUser, googleSignIn, setUser, updateUser } = useAuth()
@@ -120,6 +120,7 @@ const Signup = () => {
 
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };
