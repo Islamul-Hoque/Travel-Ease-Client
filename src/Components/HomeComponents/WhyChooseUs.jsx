@@ -24,8 +24,8 @@ const reasons = [
 
 const WhyChooseUs = () => {
   return (
-    <div className="px-6 md:px-10 my-16">
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">Why <span className="text-gradient">Choose Us</span></h2>
+    <div className="px-6 md:px-10 ">
+      <h2 className="text-[1.4rem] md:text-[2.4rem] font-bold text-center mb-12">Why <span className="text-gradient">Choose Us</span></h2>
       <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-10 items-center">
         <div className="aspect-16/11 overflow-hidden rounded-xl shadow-lg"><img src="https://i.ibb.co.com/RpRthN44/unnamed.jpg" alt="Luxury car" className="h-full w-full object-cover" /></div>
         <div className="space-y-6">

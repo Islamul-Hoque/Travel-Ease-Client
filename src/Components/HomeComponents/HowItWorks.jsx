@@ -37,8 +37,8 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <div className="px-6 md:px-10 my-16">
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">  How <span className="text-gradient">It Works</span> </h2>
+    <div className="px-6 md:px-10 mt-4">
+      <h2 className="text-2xl md:text-4xl font-bold text-center mb-14">  How <span className="text-gradient">It Works</span> </h2>
 
       <ul className="timeline timeline-vertical">
         {steps.map((step, index) => (

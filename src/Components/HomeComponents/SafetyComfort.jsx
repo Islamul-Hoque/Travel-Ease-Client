@@ -27,9 +27,9 @@ const cardVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 
 
 const SafetyComfort = () => {
     return (
-        <div className="py-16 px-6 md:px-10">
+        <div className="py-12 px-6 md:px-10">
             <div className="text-center mb-12">
-                <h2 className="text-2xl md:text-4xl font-bold">Safety & <span className="text-gradient">Comfort Features</span></h2>
+                <h2 className="text-[1.4rem] md:text-[2.4rem] font-bold">Safety & <span className="text-gradient">Comfort Features</span></h2>
                 <p className="text-gray-600 dark:text-gray-300 mt-4">We prioritize your comfort and convenience in every ride.</p>
             </div>
             <motion.div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.4 }} transition={{ staggerChildren: 0.15 }}>

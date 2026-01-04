@@ -36,9 +36,9 @@ const cardVariants = {
 
 const Testimonials = () => {
   return (
-    <div className="max-w-7xl mx-auto mb-16 text- gray-800 px-6 md:px-10">
+    <div className="max-w-7xl mx-auto mb-12 px-6 md:px-10">
       <div className="mx-auto text-center my-14">
-        <h2 className="text-2xl md:text-4xl font-bold text-center mb-8"> What Our <span className="text-gradient">Customers Say</span></h2>
+        <h2 className="text-[1.4rem] md:text-[2.4rem] font-bold text-center mb-12"> What Our <span className="text-gradient">Customers Say</span></h2>
       </div>
 
       {/* Motion grid with staggered children */}

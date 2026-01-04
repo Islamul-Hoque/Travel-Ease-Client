@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const AppDownload = () => {
     return (
-        <div className='px-6 md:px-10 mt-12'>
+        <div className='px-6 md:px-10 mt-14'>
             <div className=" px-4  bg-gray-50 dark:bg-gray-800 py-16 text-center rounded-xl shadow-md">
                 <h2 className="text-2xl md:text-4xl font-bold mb-4">Download the <span className="text-gradient">TravelEase App</span></h2>
                 <p className="text-gray-600 w-[90%] mx-auto dark:text-gray-300 mb-6">Book rides faster and enjoy seamless travel with our mobile app.</p>

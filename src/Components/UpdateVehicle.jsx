@@ -1,9 +1,10 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router";
-import { toast } from "react-toastify";
+
 import useAxios from "../Hooks/useAxios.jsx";
 import useAuth from "../Hooks/useAuth.jsx";
 import Spinner from "./Spinner.jsx";
+import toast, { Toaster } from "react-hot-toast";
 
 const categories = ["Sedan", "SUV", "Electric", "Van"]
 
@@ -85,6 +86,7 @@ const UpdateVehicle = () => {
           <div className="form-control"><button type="submit" className="btn-primary-w-full mt-4">Update Vehicle</button></div>
         </form>
       </div>
+      <Toaster />
     </div>
   );
 };

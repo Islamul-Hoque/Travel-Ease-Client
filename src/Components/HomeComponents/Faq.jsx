@@ -28,7 +28,7 @@ const faqs = [
     return (
         <div className="px-6 md:px-10 ">
           <div className="">
-            <div className="text-center mb-12">
+            <div className="text-center  my-14">
                 <motion.h2 initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
                   className="text-3xl md:text-4xl font-bold ">Frequently <span className="text-gradient"> Asked Questions</span></motion.h2>
                 <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }} viewport={{ once: true }} 
