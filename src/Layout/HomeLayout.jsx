@@ -44,14 +44,15 @@ const HomeLayout = () => {
                     }
                 </div>
             </section>
-            <section><TopCategories/> </section>
+            {/* <section><TopCategories/> </section>
 
             <section><WhyChooseUs/></section>
-            <section> <HowItWorks/></section>
-
-            <section><Faq/></section>
-            {/* <section> <Testimonials/></section> */}
             <section> <SafetyComfort/></section>
+
+            <section> <HowItWorks/></section> */}
+
+            {/* <section> <Testimonials/></section> */}
+            <section><Faq/></section>
 
 
             <section><AppDownload/> </section>

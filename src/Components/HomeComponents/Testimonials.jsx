@@ -47,9 +47,10 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="mb-16 text-gray-800  px-6 md:px-10">
+   <div className=" max-w-7xl mx-auto">
+     <div className="mb-16 text-gray-800  px-6 md:px-10">
       <div className="mx-auto text-center my-14">
-       <h2 className="text-2xl md:text-4xl font-bold text-center mb-8"> What Our <span className="text-gradient">Customers Say</span></h2>
+         <h2 className="text-2xl md:text-4xl font-bold text-center mb-8"> What Our <span className="text-gradient">Customers Say</span></h2>
       </div>
 
       <Swiper loop={true} effect={"coverflow"} grabCursor={true} centeredSlides={true} slidesPerView={3}
@@ -74,7 +75,7 @@ const Testimonials = () => {
       >
    
           {testimonials.map((t, i) => (
-            <SwiperSlide key={i}>
+            <SwiperSlide key={i} className="">
                   <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center h-full">
                     <img src={t.image} alt={t.name} className="w-16 h-16 rounded-full mb-4 object-cover" />
                     <h3 className="font-semibold text-lg">{t.name}</h3>
@@ -85,7 +86,8 @@ const Testimonials = () => {
         ))}
 
       </Swiper>
-    </section>
+    </div>
+   </div>
   );
 }
 
