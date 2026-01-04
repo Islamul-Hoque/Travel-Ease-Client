@@ -51,14 +51,14 @@ export default function Navbar() {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"> {navLinks} </ul>
                 </div>
 
-                <Link to="/" className="flex items-center gap-2"> <h1 className="text-[1.3rem] font-bold"> Travel<span className="text-gradient">Ease</span> </h1>   </Link>
+                <Link to="/" className="flex items-center gap-2"> <h1 className="md:text-[1.3rem] font-bold"> Travel<span className="text-gradient">Ease</span> </h1>   </Link>
             </div>
 
             <div className="navbar-center hidden md:flex">
                 <ul className="font-semibold menu menu-horizontal px-1 gap-1"> {navLinks} </ul>
             </div>
 
-            <div className="navbar-end gap-3">
+            <div className="navbar-end md:gap-3">
                 <label className="swap swap-rotate text-base-content mr-4">
                     <input type="checkbox"
                     onChange={(e) => handleTheme(e.target.checked)}
@@ -81,7 +81,7 @@ export default function Navbar() {
                         </ul>
                     </div>
                 ) : (
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1 md:gap-3">
                         <Link to="/login" className="btn-secondary">Login</Link>
                         <Link to="/register" className="btn-primary btn-sm">Register</Link>
                     </div>

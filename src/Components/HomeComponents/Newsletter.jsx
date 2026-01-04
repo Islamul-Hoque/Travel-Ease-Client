@@ -15,7 +15,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-gray-900 py-16 px-6 md:px-10">
+    <section className=" py-16 px-6 md:px-10">
       <Toaster position="top-center" reverseOrder={false} />
       <div className="text-center bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md py-12 px-6">
         <h2 className="text-2xl md:text-4xl font-bold mb-4">Stay Updated with <span className="text-gradient">New Rides</span></h2>

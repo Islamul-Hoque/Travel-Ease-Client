@@ -6,13 +6,13 @@ const testimonials = [
     name: "Ayesha Rahman",
     location: "Dhaka, Bangladesh",
     review: "Loved the variety of vehicles available. Found exactly what I needed for my trip.",
-    image: "https://i.ibb.co.com/s9N0JRx9/img231.jpg",
+    image: "https://i.ibb.co.com/8LBCLq63/abc.jpg",
   },
   {
     name: "Tanvir Ahmed",
     location: "Chattogram, Bangladesh",
     review: "Great service, smooth pickup and return process. Will definitely use again.",
-    image: "https://randomuser.me/api/portraits/men/4.jpg",
+    image: "https://i.ibb.co.com/8nkHLw1R/360-F-611894278-6s-Iq-Ai9-Akdrw9a-Nul-K77-WHPJJHJFWTV0.jpg",
   },
   {
     name: "Nusrat Jahan",
@@ -24,7 +24,7 @@ const testimonials = [
     name: "Sayedul Hoque",
     location: "Rajshahi, Bangladesh",
     review: "The booking process was smooth and the support team was very responsive.",
-    image: "https://i.ibb.co.com/0yFv71Xh/puzzled-displeased-man-with-stubble-grows-house-plants-needs-wipe-dust-sansevieria-273609-27490.jpg",
+    image: "https://i.ibb.co.com/r2htzWbD/360-F-699466075-Da-PTBNl-NQTOwwjk-Oi-FEo-Ovz-DV0-By-XR9-E.jpg",
   },
 
 ];
@@ -36,11 +36,9 @@ const cardVariants = {
 
 const Testimonials = () => {
   return (
-    <div className="max-w-7xl mx-auto mb-16 text-gray-800 px-6 md:px-10">
+    <div className="max-w-7xl mx-auto mb-16 text- gray-800 px-6 md:px-10">
       <div className="mx-auto text-center my-14">
-        <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
-          What Our <span className="text-gradient">Customers Say</span>
-        </h2>
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-8"> What Our <span className="text-gradient">Customers Say</span></h2>
       </div>
 
       {/* Motion grid with staggered children */}
