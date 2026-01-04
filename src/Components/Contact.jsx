@@ -76,9 +76,9 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">   Send us a message  </h3>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input readOnly type="text" defaultValue={  user?.displayName || user?.providerData?.[0]?.displayName }  placeholder="Your Name"
+              <input required type="text" defaultValue={  user?.displayName || user?.providerData?.[0]?.displayName }  placeholder="Your Name"
                 className="w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"  />
-              <input readOnly  type="email"  defaultValue={user?.email || user?.providerData?.[0]?.email} placeholder="Your Email"
+              <input  required type="email"  defaultValue={user?.email || user?.providerData?.[0]?.email} placeholder="Your Email"
                 className="w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"  />
               <textarea rows="4" placeholder="Your Message" required
                 className="w-full focus:outline-none focus:ring-2 focus:ring-indigo-500  p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100" >
